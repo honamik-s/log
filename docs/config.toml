@@ -11,7 +11,7 @@ googleAnalytics = ""
 
 [params]
     author = "Honami K"
-    description = ""
+    description = "R, stan, モデリングなどに関する情報を（主に自分用に）まとめています。"
     githubUsername = "#"
     accent = "green"
     showBorder = true
@@ -27,14 +27,9 @@ googleAnalytics = ""
     weight = 1
 
 [[menu.main]]
-    url = "/about/"
-    name = "About"
-    weight = 2
-
-[[menu.main]]
     url = "/post/"
     name = "Posts"
-    weight = 3
+    weight = 2
 
 
 # Social icons to be shown on the right-hand side of the navigation bar.
