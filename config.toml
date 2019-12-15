@@ -13,7 +13,7 @@ googleAnalytics = ""
     author = "Honami K"
     description = ""
     githubUsername = "#"
-    accent = "red"
+    accent = "green"
     showBorder = true
     backgroundColor = "white"
     font = "Raleway" # should match the name on Google Fonts!
@@ -42,10 +42,14 @@ googleAnalytics = ""
 # The list of available icons can be found at http://fontawesome.io/icons.
 
 
+[[menu.icon]]
+    url = "https://clemhk.wordpress.com"
+    name = "wordpress"
+    weight = 1
 
 
 [[menu.icon]]
     url = "https://twitter.com/hnm_clem/"
     name = "twitter"
-    weight = 1
+    weight = 2
 
