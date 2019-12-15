@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Scribbles that matter</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on Scribbles that matter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Mon, 16 Dec 2019 21:13:14 -0500</lastBuildDate>
+    
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Stanで階層diffusionモデル</title>
+      <link>/post/2015-07-23-r-rmarkdown/</link>
+      <pubDate>Mon, 16 Dec 2019 21:13:14 -0500</pubDate>
+      
+      <guid>/post/2015-07-23-r-rmarkdown/</guid>
+      <description>はじめに Stan Advent Calender 2019 16日目の記事です。 近ごろ学会や論文でもdiffusionモデルを扱った研究が増えてきたように思います。自分の研究でもこのモ</description>
+    </item>
+    
+  </channel>
+</rss>
