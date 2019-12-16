@@ -13,10 +13,10 @@
     
     <item>
       <title>Stanで階層diffusionモデル</title>
-      <link>/post/2015-07-23-r-rmarkdown/</link>
+      <link>/post/2019-12-16-stan-diffusion/</link>
       <pubDate>Mon, 16 Dec 2019 21:13:14 -0500</pubDate>
       
-      <guid>/post/2015-07-23-r-rmarkdown/</guid>
+      <guid>/post/2019-12-16-stan-diffusion/</guid>
       <description>はじめに Stan Advent Calender 2019 16日目の記事です。 近ごろ学会や論文でもdiffusionモデルを扱った研究が増えてきたように思います。自分の研究でもこのモ</description>
     </item>
     
@@ -26,7 +26,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/about/</guid>
-      <description>R, stan, モデリングなどに関する情報を（主に自分用に）まとめている場所です。Stan Advent Calenderの記事を置く場所が必要だったのと、Githu</description>
+      <description>R, stan, モデリングなどに関する情報を（主に自分用に）まとめています。</description>
     </item>
     
   </channel>
