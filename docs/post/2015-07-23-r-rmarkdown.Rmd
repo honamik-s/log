@@ -97,12 +97,12 @@ some_data %>%
 data {
   int<lower=1> N;      // 参加者数
   int C;               // 条件数
-  
+
   int<lower=0> N_Re_Te_max; // "E"反応数の最大値, 標的=E
   int<lower=0> N_Rf_Te_max; // "F"反応数の最大値, 標的=E
   int<lower=0> N_Re_Tf_max; // "E"反応数の最大値, 標的=F
   int<lower=0> N_Rf_Tf_max; // "F"反応数の最大値, 標的=F
-  
+
   int<lower=0> N_Re_Te[N, C];  // "E"反応数, 標的=E
   int<lower=0> N_Rf_Te[N, C];  // "F"反応数, 標的=E
   int<lower=0> N_Re_Tf[N, C];  // "E"反応数, 標的=F
@@ -112,7 +112,7 @@ data {
   real RT_Rf_Te[N, C, N_Rf_Te_max];  // "F"反応をした試行の反応時間, 標的=E
   real RT_Re_Tf[N, C, N_Re_Tf_max];  // "E"反応をした試行の反応時間, 標的=F
   real RT_Rf_Tf[N, C, N_Rf_Tf_max];  // "F"反応をした試行の反応時間, 標的=F
-  
+
   real minRT[N];       // 各参加者の反応時間の最小値
   real RTbound;        // 反応時間の打ち切り値
 }
@@ -120,7 +120,7 @@ data {
 parameters {
   vector[3] mu_p;
   vector<lower=0>[3] sigma;
-  
+
   vector<lower=0>[N] alpha_pr[2];
   vector<lower=0>[N] delta_pr[2];
   vector<lower=RTbound,upper=max(minRT)>[N] tau_pr[2];
@@ -130,7 +130,7 @@ transformed parameters {
   vector<lower=0>[N] alpha[2]; // 閾値
   vector<lower=0>[N] delta[2]; // ドリフト率
   vector<lower=RTbound, upper=max(minRT)>[N] tau[2]; // 非決定時間
-  
+
   for (c in 1:C){
     alpha[c] = exp(mu_p[1] + sigma[1] * alpha_pr[c]);
     delta[c] = exp(mu_p[2] + sigma[2] * delta_pr[c]);
@@ -171,6 +171,13 @@ model {
 ```
 
 
+## Stanコードのポイント
+
+`transformed parameters`ブロックでややこしいことをしていますが、ここでは`_pr`を標準正規分布から推定して、`exp`で対数のスケールに変換しています。こちらのほうが計算が速いと某先生に教えていただいた書き方です。なので`alpha_pr`の事前分布は`normal`になっていますが、実際の事前分布には対数正規分布を置いていることになります。
+
+
+`model`ブロックの4つの`wiener_lpdf`については、正直なところあまり自信がありません…。ここでは"E"反応を上側の閾値 ($\alpha$) と置いているので、標的はEのときに正しく"E"方向へ情報集積をした試行と、誤って"F"方向に情報集積をした試行ではドリフト率の正負が異なります。が、stanの`wiener`関数は上方向へのドリフト率しか推定しないので、"F"方向へ行ってしまった試行分については`delta`の正負をひっくり返すことになります。
+
 
 ## データを整える
 
@@ -190,40 +197,40 @@ ddhmdataset <- function(rawdata,scale = TRUE){
   subjList <- unique(rawdata[,"participant"])
   numSubjs <- length(subjList)
   numC <- 2
-  
+
   # Number of E and F responses for each subject
   # target = E
   rawdata_e <- rawdata[rawdata$target == "E",]
-  
+
   N_Re_Te <- with(rawdata_e, aggregate(correct == 1, by = list(participant, valid), FUN = sum)[["x"]])
   N_Rf_Te <- with(rawdata_e, aggregate(correct == 0, by = list(participant, valid), FUN = sum)[["x"]])
-  
+
   N_Re_Te <- array(N_Re_Te, dim = c(numSubjs, numC))
   N_Rf_Te <- array(N_Rf_Te, dim = c(numSubjs, numC))
-  
-  
+
+
   #target = F
   rawdata_f <- rawdata[rawdata$target == "F",]
-  
+
   N_Rf_Tf <- with(rawdata_f, aggregate(correct == 1, by = list(participant, valid), FUN = sum)[["x"]])
   N_Re_Tf <- with(rawdata_f, aggregate(correct == 0, by = list(participant, valid), FUN = sum)[["x"]])
-  
+
   N_Rf_Tf <- array(N_Rf_Tf, dim = c(numSubjs, numC))
   N_Re_Tf <- array(N_Re_Tf, dim = c(numSubjs, numC))
-  
-  
+
+
   # Minimum reaction time per subject
   minRT <- with(rawdata, aggregate(rt.s, by = list(y = participant), FUN = min)[["x"]])
-  
+
   # Reaction times for left and right responses
   # target = E
   RT_Re_Te <- array(-1, c(numSubjs, numC, max(N_Re_Te)))
   RT_Rf_Te <- array(-1, c(numSubjs, numC, max(N_Rf_Te)))
-  
+
   # target = F
   RT_Re_Tf <- array(-1, c(numSubjs, numC, max(N_Re_Tf)))
   RT_Rf_Tf <- array(-1, c(numSubjs, numC, max(N_Rf_Tf)))
-  
+
   # Reaction time data
   # target = E (upper = E)
   for (i in 1:numSubjs) {
@@ -234,11 +241,11 @@ ddhmdataset <- function(rawdata,scale = TRUE){
       }else{
         RT_Rf_Te[i, c, 1] <- -1.0
       }
-      RT_Re_Te[i, c, 1:N_Re_Te[i,c]] <- tmp$rt.s[tmp$correct == 1] / RTscale 
+      RT_Re_Te[i, c, 1:N_Re_Te[i,c]] <- tmp$rt.s[tmp$correct == 1] / RTscale
     }
   }
 
-  
+
   # target = F
   for (i in 1:numSubjs) {
     for (c in 1:2) {
@@ -248,10 +255,10 @@ ddhmdataset <- function(rawdata,scale = TRUE){
         }else{
           RT_Re_Tf[i, c, 1] <- -1.0
         }
-        RT_Rf_Tf[i, c, 1:N_Rf_Tf[i,c]] <- tmp$rt.s[tmp$correct == 1] / RTscale 
+        RT_Rf_Tf[i, c, 1:N_Rf_Tf[i,c]] <- tmp$rt.s[tmp$correct == 1] / RTscale
       }
     }
-  
+
   # stan data
   dataList <- list(
     N       = numSubjs,# Number of subject
@@ -259,21 +266,21 @@ ddhmdataset <- function(rawdata,scale = TRUE){
     N_Rf_Te_max = max(N_Rf_Te),  # Max (across subjects) number of left responses, target=left
     N_Re_Tf_max = max(N_Re_Tf),  # Max (across subjects) number of left responses, target=left
     N_Rf_Tf_max = max(N_Rf_Tf),  # Max (across subjects) number of left responses, target=left
-    
+
     N_Re_Te = N_Re_Te,    # Number of left responses for each subj, target=left
     N_Rf_Te = N_Rf_Te,     # Number of right responses for each subj, target=left
     N_Re_Tf = N_Re_Tf,    # Number of left responses for each subj, target=right
     N_Rf_Tf = N_Rf_Tf,     # Number of right responses for each subj, target=right
-    
+
     RT_Re_Te = RT_Re_Te,    # left response times, target=left
     RT_Rf_Te = RT_Rf_Te,    # right response times, target=left
     RT_Re_Tf = RT_Re_Tf,    # left response times, target=right
     RT_Rf_Tf = RT_Rf_Tf,    # right response times, target=right
-    
+
     minRT = array(minRT),
     RTbound = RTbound,     # lower bound or RT across all subjects
     C = 2)
-  
+
   # stan inits
   if(scale == TRUE){
     inits_fixed <- c(0.5, 0.5, 0.1)
@@ -350,7 +357,7 @@ $\delta$の事後分布をプロットしてみます。最近`tidybayes`には�
 
 ```{r warning=FALSE}
 library(tidybayes)
-fit %>% 
+fit %>%
   tidybayes::spread_draws(delta[valid, subj]) %>%
   ggplot2::ggplot(aes(x = delta, y = as.factor(valid))) +
   tidybayes::stat_pointintervalh() +
