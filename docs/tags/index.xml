@@ -2,39 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Scribbles that matter</title>
-    <link>/tags/</link>
+    <link>https://honamik-s.github.io/log/tags/</link>
     <description>Recent content in Tags on Scribbles that matter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 16 Dec 2019 21:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 17 Dec 2019 09:10:14 -0500</lastBuildDate>
     
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://honamik-s.github.io/log/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>diffusion</title>
-      <link>/tags/diffusion/</link>
-      <pubDate>Mon, 16 Dec 2019 21:13:14 -0500</pubDate>
+      <link>https://honamik-s.github.io/log/tags/diffusion/</link>
+      <pubDate>Tue, 17 Dec 2019 09:10:14 -0500</pubDate>
       
-      <guid>/tags/diffusion/</guid>
+      <guid>https://honamik-s.github.io/log/tags/diffusion/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>stan</title>
-      <link>/tags/stan/</link>
-      <pubDate>Mon, 16 Dec 2019 21:13:14 -0500</pubDate>
+      <title>r</title>
+      <link>https://honamik-s.github.io/log/tags/r/</link>
+      <pubDate>Tue, 17 Dec 2019 09:10:14 -0500</pubDate>
       
-      <guid>/tags/stan/</guid>
+      <guid>https://honamik-s.github.io/log/tags/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>stats</title>
-      <link>/tags/stats/</link>
+      <link>https://honamik-s.github.io/log/tags/stats/</link>
+      <pubDate>Tue, 17 Dec 2019 09:10:14 -0500</pubDate>
+      
+      <guid>https://honamik-s.github.io/log/tags/stats/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>stan</title>
+      <link>https://honamik-s.github.io/log/tags/stan/</link>
       <pubDate>Mon, 16 Dec 2019 21:13:14 -0500</pubDate>
       
-      <guid>/tags/stats/</guid>
+      <guid>https://honamik-s.github.io/log/tags/stan/</guid>
       <description></description>
     </item>
     

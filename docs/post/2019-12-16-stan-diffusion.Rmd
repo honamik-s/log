@@ -342,7 +342,7 @@ fit <- rstan::sampling(mod,
 fit <- readRDS("exp.RDS")
 ```
 
-20秒ぐらいで収束しました。中身を見てみます。
+400試行分のデータ (3人の合計) で3分ぐらいで収束しました。中身を見てみます。
 
 ```{r}
 print(fit)
@@ -356,23 +356,25 @@ rstan::traceplot(fit, pars = c("alpha", "delta", "tau"), inc_warmup = T)
 ```
 
 
-$\delta$の事後分布をプロットしてみます。最近`tidybayes`にはまっています。手がかり条件は1: 無効、2: 有効、となっています。
+$\delta$の事後分布をプロットしてみます。最近`tidybayes`にはまっています。手がかり条件は1: 無効、2: 有効、となっています。今回は3人分のデータを使ったので、参加者ごとに`facet`に分けてプロットしてみました。
 
 ```{r warning=FALSE}
 library(tidybayes)
 fit %>% 
-  tidybayes::spread_draws(delta[valid, subj]) %>%
+  tidybayes::spread_draws(delta[valid,subj]) %>%
   ggplot2::ggplot(aes(x = delta, y = as.factor(valid))) +
   tidybayes::stat_pointintervalh() +
   theme(panel.grid.major.y = element_blank(),
         axis.title = element_text(size = 15)) +
   ylab("手がかり条件") +
-  xlab(expression(delta))
+  xlab(expression(delta)) +
+  facet_wrap(~subj)
 ```
 
 
 
-このように、反応時間と正答率の同時確率分布を用いて、パラメータを推定することができました。空間手がかり課題で注意が向いている・いない条件の違いがドリフト率に反映されていそうなことがわかります。今回は正答率が極端に高い課題を使ったのであんまり推定結果がおもしろくないのですが、反応時間と正答率のトレードオフが起こるような課題を使うともっと楽しいと思います。
+このように、反応時間と正答率の同時確率分布を用いて、パラメータを推定することができました。空間手がかり課題で注意が向いている・いない条件の違いがドリフト率に反映されていそうなことがわかります（といいたいところですが、2番と3番の人ではあんまり違いがないですね）。今回は正答率が極端に高い課題を使ったのであんまり推定結果がおもしろくないのですが、反応時間と正答率のトレードオフが起こるような課題を使うともっと楽しいと思います。
+
 
 
 ## まとめ

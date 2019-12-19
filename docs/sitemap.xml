@@ -3,52 +3,62 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/categories/</loc>
+    <loc>https://honamik-s.github.io/log/categories/</loc>
+    <lastmod>2019-12-17T09:10:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://honamik-s.github.io/log/tags/diffusion/</loc>
+    <lastmod>2019-12-17T09:10:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://honamik-s.github.io/log/post/</loc>
+    <lastmod>2019-12-17T09:10:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://honamik-s.github.io/log/categories/r/</loc>
+    <lastmod>2019-12-17T09:10:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://honamik-s.github.io/log/tags/r/</loc>
+    <lastmod>2019-12-17T09:10:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://honamik-s.github.io/log/</loc>
+    <lastmod>2019-12-17T09:10:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://honamik-s.github.io/log/post/2019-12-17-r-diffusion/</loc>
+    <lastmod>2019-12-17T09:10:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://honamik-s.github.io/log/tags/stats/</loc>
+    <lastmod>2019-12-17T09:10:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://honamik-s.github.io/log/tags/</loc>
+    <lastmod>2019-12-17T09:10:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://honamik-s.github.io/log/tags/stan/</loc>
     <lastmod>2019-12-16T21:13:14-05:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/diffusion/</loc>
+    <loc>https://honamik-s.github.io/log/post/2019-12-16-stan-diffusion/</loc>
     <lastmod>2019-12-16T21:13:14-05:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/</loc>
-    <lastmod>2019-12-16T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2019-12-16T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/</loc>
-    <lastmod>2019-12-16T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/stan/</loc>
-    <lastmod>2019-12-16T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2019-12-16-stan-diffusion/</loc>
-    <lastmod>2019-12-16T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/stats/</loc>
-    <lastmod>2019-12-16T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2019-12-16T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/about/</loc>
+    <loc>https://honamik-s.github.io/log/about/</loc>
   </url>
   
 </urlset>
