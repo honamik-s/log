@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>r on Scribbles that matter</title>
-    <link>https://honamik-s.github.io/log/tags/r/</link>
+    <link>/tags/r/</link>
     <description>Recent content in r on Scribbles that matter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Tue, 17 Dec 2019 09:10:14 -0500</lastBuildDate>
     
-	<atom:link href="https://honamik-s.github.io/log/tags/r/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Stanで階層diffusionモデル: 下準備</title>
-      <link>https://honamik-s.github.io/log/post/2019-12-17-r-diffusion/</link>
+      <link>/post/2019-12-17-r-diffusion/</link>
       <pubDate>Tue, 17 Dec 2019 09:10:14 -0500</pubDate>
       
-      <guid>https://honamik-s.github.io/log/post/2019-12-17-r-diffusion/</guid>
+      <guid>/post/2019-12-17-r-diffusion/</guid>
       <description>Stanで階層diffusionモデルのコードを書くときに一番面倒大変なのはデータの整形です。（余談ですが、最初にやったときは1週間ぐらいか</description>
     </item>
     
