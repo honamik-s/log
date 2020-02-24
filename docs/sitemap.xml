@@ -3,62 +3,66 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://honamik-s.github.io/log/categories/</loc>
+    <loc>/categories/</loc>
     <lastmod>2020-02-23T21:13:14-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://honamik-s.github.io/log/post/</loc>
+    <loc>/post/</loc>
     <lastmod>2020-02-23T21:13:14-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://honamik-s.github.io/log/</loc>
+    <loc>/</loc>
     <lastmod>2020-02-23T21:13:14-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://honamik-s.github.io/log/categories/stan/</loc>
+    <loc>/categories/stan/</loc>
     <lastmod>2020-02-23T21:13:14-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://honamik-s.github.io/log/tags/stan/</loc>
+    <loc>/tags/stan/</loc>
     <lastmod>2020-02-23T21:13:14-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://honamik-s.github.io/log/tags/stats/</loc>
+    <loc>/tags/stats/</loc>
     <lastmod>2020-02-23T21:13:14-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://honamik-s.github.io/log/tags/</loc>
+    <loc>/tags/</loc>
     <lastmod>2020-02-23T21:13:14-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://honamik-s.github.io/log/post/2020-02-23-experimental-psychologists/</loc>
+    <loc>/post/2020-02-23-experimental-psychologists/</loc>
     <lastmod>2020-02-23T21:13:14-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://honamik-s.github.io/log/tags/diffusion/</loc>
+    <loc>/tags/diffusion/</loc>
     <lastmod>2019-12-16T21:13:14-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://honamik-s.github.io/log/categories/r/</loc>
+    <loc>/categories/r/</loc>
     <lastmod>2019-12-16T21:13:14-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://honamik-s.github.io/log/post/2019-12-16-stan-diffusion/</loc>
+    <loc>/post/2019-12-16-stan-diffusion/</loc>
     <lastmod>2019-12-16T21:13:14-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://honamik-s.github.io/log/about_1/</loc>
+    <loc>/about/</loc>
+  </url>
+  
+  <url>
+    <loc>/about_1/</loc>
   </url>
   
 </urlset>

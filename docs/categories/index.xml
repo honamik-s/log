@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Scribbles that matter</title>
-    <link>https://honamik-s.github.io/log/categories/</link>
+    <link>/categories/</link>
     <description>Recent content in Categories on Scribbles that matter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 23 Feb 2020 21:13:14 -0500</lastBuildDate>
     
-	<atom:link href="https://honamik-s.github.io/log/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Stan</title>
-      <link>https://honamik-s.github.io/log/categories/stan/</link>
+      <link>/categories/stan/</link>
       <pubDate>Sun, 23 Feb 2020 21:13:14 -0500</pubDate>
       
-      <guid>https://honamik-s.github.io/log/categories/stan/</guid>
+      <guid>/categories/stan/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>https://honamik-s.github.io/log/categories/r/</link>
+      <link>/categories/r/</link>
       <pubDate>Mon, 16 Dec 2019 21:13:14 -0500</pubDate>
       
-      <guid>https://honamik-s.github.io/log/categories/r/</guid>
+      <guid>/categories/r/</guid>
       <description></description>
     </item>
     
