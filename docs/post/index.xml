@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Scribbles that matter</title>
-    <link>/post/</link>
+    <link>https://honamik-s.github.io/log/post/</link>
     <description>Recent content in Posts on Scribbles that matter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 23 Feb 2020 21:13:14 -0500</lastBuildDate>
     
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://honamik-s.github.io/log/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>実験心理学のための統計モデリング入門</title>
-      <link>/post/2020-02-23-experimental-psychologists/</link>
+      <link>https://honamik-s.github.io/log/post/2020-02-23-experimental-psychologists/</link>
       <pubDate>Sun, 23 Feb 2020 21:13:14 -0500</pubDate>
       
-      <guid>/post/2020-02-23-experimental-psychologists/</guid>
+      <guid>https://honamik-s.github.io/log/post/2020-02-23-experimental-psychologists/</guid>
       <description>私 実験心理学者のための統計モデリング 私がベイジアンになってから1年近く経過し、その間にそれなりのモデリング経験を積んできました。ただ、「ベイ</description>
     </item>
     
     <item>
       <title>Stanで階層diffusionモデル</title>
-      <link>/post/2019-12-16-stan-diffusion/</link>
+      <link>https://honamik-s.github.io/log/post/2019-12-16-stan-diffusion/</link>
       <pubDate>Mon, 16 Dec 2019 21:13:14 -0500</pubDate>
       
-      <guid>/post/2019-12-16-stan-diffusion/</guid>
+      <guid>https://honamik-s.github.io/log/post/2019-12-16-stan-diffusion/</guid>
       <description>はじめに Stan Advent Calender 2019 16日目の記事です。 近ごろ学会や論文でもdiffusionモデルを扱った研究が増えてきたように思います。自分の研究でもこのモ</description>
     </item>
     
