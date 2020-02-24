@@ -6,19 +6,10 @@
     <description>Recent content in diffusion on Scribbles that matter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 17 Dec 2019 09:10:14 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 16 Dec 2019 21:13:14 -0500</lastBuildDate>
     
 	<atom:link href="/tags/diffusion/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Stanで階層diffusionモデル: 下準備</title>
-      <link>/post/2019-12-17-r-diffusion/</link>
-      <pubDate>Tue, 17 Dec 2019 09:10:14 -0500</pubDate>
-      
-      <guid>/post/2019-12-17-r-diffusion/</guid>
-      <description>Stanで階層diffusionモデルのコードを書くときに一番面倒大変なのはデータの整形です。（余談ですが、最初にやったときは1週間ぐらいか</description>
-    </item>
     
     <item>
       <title>Stanで階層diffusionモデル</title>

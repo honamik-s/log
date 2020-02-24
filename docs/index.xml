@@ -6,18 +6,18 @@
     <description>Recent content on Scribbles that matter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 17 Dec 2019 09:10:14 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 23 Feb 2020 21:13:14 -0500</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Stanで階層diffusionモデル: 下準備</title>
-      <link>/post/2019-12-17-r-diffusion/</link>
-      <pubDate>Tue, 17 Dec 2019 09:10:14 -0500</pubDate>
+      <title>実験心理学のための統計モデリング入門</title>
+      <link>/post/2020-02-23-experimental-psychologists/</link>
+      <pubDate>Sun, 23 Feb 2020 21:13:14 -0500</pubDate>
       
-      <guid>/post/2019-12-17-r-diffusion/</guid>
-      <description>Stanで階層diffusionモデルのコードを書くときに一番面倒大変なのはデータの整形です。（余談ですが、最初にやったときは1週間ぐらいか</description>
+      <guid>/post/2020-02-23-experimental-psychologists/</guid>
+      <description>私 実験心理学者のための統計モデリング 私がベイジアンになってから1年近く経過し、その間にそれなりのモデリング経験を積んできました。ただ、「ベイ</description>
     </item>
     
     <item>
@@ -35,6 +35,15 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/about/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>/about_1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/about_1/</guid>
       <description>R, stan, モデリングなどに関する情報を（主に自分用に）まとめています。</description>
     </item>
     

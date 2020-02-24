@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ja-jp">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Stanで階層diffusionモデル</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: green;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="../../css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.63.2" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Stanで階層diffusionモデル</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="../../">Home</a></li>
+                            
+                                <li><a href="../../about/">About</a></li>
+                            
+                                <li><a href="../../post/">Posts</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://clemhk.wordpress.com"><i class="fa fa-wordpress"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/hnm_clem/"><i class="fa fa-twitter"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>Stanで階層diffusionモデル</h2>
+        <h5>December 16, 2019</h5>
+        
+<a href="../../tags/stats"><kbd class="item-tag">stats</kbd></a>
+
+<a href="../../tags/diffusion"><kbd class="item-tag">diffusion</kbd></a>
+
+<a href="../../tags/stan"><kbd class="item-tag">stan</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content">
+
+
+<div id="はじめに" class="section level2">
+<h2>はじめに</h2>
+<p><a href="https://qiita.com/advent-calendar/2019/stan">Stan Advent Calender 2019</a> 16日目の記事です。</p>
+<p>近ごろ学会や論文でもdiffusionモデルを扱った研究が増えてきたように思います。自分の<a href="http://ogwlab.org/?p=1425">研究</a>でもこのモデルをよく使うのですが、知名度の割には参考資料が少ないような気がしています。特に<a href="https://bayesmodels.com/">怖い本</a>や<a href="http://www.asakura.co.jp/G_12.php?isbn=ISBN978-4-254-12220-6">実践ベイズモデリング</a>のように、教科書的に使える資料がないなあ、と感じています。そこで今回は自分で作ってみることにしました。うまくできるかはわかりません。お付き合いください。</p>
+</div>
+<div id="diffusionモデルとは" class="section level2">
+<h2>Diffusionモデルとは</h2>
+<div id="前置き" class="section level3">
+<h3>前置き</h3>
+<p>私は実験屋さん (自称) です。特に視覚的注意に関する実験をしています。注意研究のおもしろいところは、実験課題の種類がとても多いことだと思っています。空間手がかり課題・フランカー課題・視覚探索課題…、など、注意のいろいろな側面を切り出すためのパラダイムがたくさん考案されてきました。一方で、これらの課題を分析する方法はそんなに多くありません。注意メカニズムが働いている状態 (実験群) と働いていない状態 (統制群) の平均反応時間を比較し、その差を“注意”の有無による差であるとすることが多いです。課題によっては正答率を指標とすることもありますが、主流は反応時間でしょう。</p>
+</div>
+<div id="確率分布としてのdiffusionモデル" class="section level3">
+<h3>確率分布としてのdiffusionモデル</h3>
+<p>慣習的な方法は、平均反応時間をt検定などを使って条件間で比較することです。でも、このやり方では情報量が極端に減ってしまっています。たとえば200試行実施したとして、これを代表値1つに圧縮してしまうのはちょっともったいないですよね。</p>
+<p>では反応時間が平均<span class="math inline">\(\mu\)</span>・分散<span class="math inline">\(\sigma\)</span>の正規分布に従うとしてベイズモデリングをしてみるのはどうでしょう？そうすれば各試行の反応時間をすべて使って分析できます。でも、これだとまだ使っていない情報がありますよね？こういう場合、たいてい正答試行の反応時間のみを取り出して分析することが多いと思います。誤答試行の情報を全部まるごと捨ててしまうのも、なんだかもったいないと思いませんか？</p>
+<p>この記事で紹介するdiffusionモデルは、<strong>反応時間と正答率の同時確率分布</strong>です。このモデルでは、2択課題における情報の蓄積→選択までの過程を主に4つのパラメータで表現します。</p>
+<table>
+<thead>
+<tr class="header">
+<th>パラメータ</th>
+<th>: 解釈</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\alpha\)</span> (閾値)</td>
+<td>: 反応が起こるまでに蓄積する必要のある情報の量</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\beta\)</span> (開始点)</td>
+<td>: どちらかの反応に対するバイアス</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\delta\)</span> (ドリフト率)</td>
+<td>: 情報の取り込みの平均速度</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\tau\)</span> (非決定時間)</td>
+<td>: 情報集積には関与しない過程 (知覚による符号化など) にかかる時間</td>
+</tr>
+</tbody>
+</table>
+<p>確率密度関数は<a href="https://mc-stan.org/docs/2_21/functions-reference/wiener-first-passage-time-distribution.html">このような</a>数式です。なんだか楽しそうですね。</p>
+<p>diffusionモデルの説明をするときに、よく<a href="https://images.app.goo.gl/XENFKPUcwwpUGGJd6">このような図</a>が使われます。各パラメータがどういう過程に対応しているのかわかりやすくてよいのですが、個人的には直観的すぎてあまり好きではありません。この図を使った説明はごろごろ転がっているので、あえてほとんど触れずに進みます。この図から直観的に理解すると、同時分布感が感じられなくて苦手なのですが、おそらくこちらの方が理解しやすい方もいらっしゃるでしょう。</p>
+<p>重要なのはこの2点です。</p>
+<ol style="list-style-type: decimal">
+<li>diffusionモデルは<strong>反応時間と正答率の同時確率分布</strong>です。</li>
+<li>4つのパラメータで表現されます。</li>
+</ol>
+</div>
+</div>
+<div id="データを読み込む" class="section level2">
+<h2>データを読み込む</h2>
+<p>ここで実際のデータを使って分析をしてみましょう。今回は空間手がかり課題 (ポズナー課題) のデータを使ってみます。空間手がかり課題をPsychoPyのbuilderで作るチュートリアルを私のボスが書いているので、<a href="http://ogwlab.org/?page_id=815">こちら</a>もご参照ください。わかりやすくておすすめです。</p>
+<p>今回使った課題はこんな流れです。</p>
+<p><img src="posner.png" /></p>
+<p>参加者の課題は、左右の箱のどちらかに呈示される文字 (標的) がEかFかを、キー押しで判断することです。標的呈示前に、「手がかり」として左右どちらかの箱の枠が短い時間だけ太く表示されます。手がかり位置と標的位置が同じ試行を「有効手がかり条件」、異なる試行を「無効手がかり条件」と呼びます。</p>
+<p>手がかりと同じ場所に標的が出てくると、手がかりによって注意がその場所に向いている状態なので、すばやく反応できます。一方で手がかりと反対側に標的が出てきたときには、手がかり位置にいったん注意が向いたあとで標的位置まで移動しなければいけないので、少し時間がかかります。この「注意が向いている状態」と「向いていない状態」との差を比較することで、目に見えない“注意”の働きを取り出しています (少なくとも、そのように考えて実験をします)。</p>
+<pre class="r"><code>some_data &lt;- read.table(file = &quot;exp.txt&quot;, header = T)
+head(some_data)</code></pre>
+<pre><code>##         rt correct key target valid participant
+## 1  626.642       1   e      E     1           0
+## 2 1038.630       0   e      F     0           0
+## 3  955.590       0   e      F     0           0
+## 4  700.037       1   e      E     1           0
+## 5  558.138       1   f      F     1           0
+## 6  650.609       1   f      F     1           0</code></pre>
+<p>誤答試行 (左) ・正答試行 (右) の反応時間はそれぞれこんな感じです。</p>
+<p><img src="../../post/2019-12-16-stan-diffusion_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="stanコードを書く" class="section level2">
+<h2>Stanコードを書く</h2>
+<pre class="stan"><code>data {
+  int&lt;lower=1&gt; N;      // 参加者数
+  int C;               // 条件数
+  
+  int&lt;lower=0&gt; N_Re_Te_max; // &quot;E&quot;反応数の最大値, 標的=E
+  int&lt;lower=0&gt; N_Rf_Te_max; // &quot;F&quot;反応数の最大値, 標的=E
+  int&lt;lower=0&gt; N_Re_Tf_max; // &quot;E&quot;反応数の最大値, 標的=F
+  int&lt;lower=0&gt; N_Rf_Tf_max; // &quot;F&quot;反応数の最大値, 標的=F
+  
+  int&lt;lower=0&gt; N_Re_Te[N, C];  // &quot;E&quot;反応数, 標的=E
+  int&lt;lower=0&gt; N_Rf_Te[N, C];  // &quot;F&quot;反応数, 標的=E
+  int&lt;lower=0&gt; N_Re_Tf[N, C];  // &quot;E&quot;反応数, 標的=F
+  int&lt;lower=0&gt; N_Rf_Tf[N, C];  // &quot;F&quot;反応数, 標的=F
+
+  real RT_Re_Te[N, C, N_Re_Te_max];  // &quot;E&quot;反応をした試行の反応時間, 標的=E
+  real RT_Rf_Te[N, C, N_Rf_Te_max];  // &quot;F&quot;反応をした試行の反応時間, 標的=E
+  real RT_Re_Tf[N, C, N_Re_Tf_max];  // &quot;E&quot;反応をした試行の反応時間, 標的=F
+  real RT_Rf_Tf[N, C, N_Rf_Tf_max];  // &quot;F&quot;反応をした試行の反応時間, 標的=F
+  
+  real minRT[N];       // 各参加者の反応時間の最小値
+  real RTbound;        // 反応時間の打ち切り値
+}
+
+parameters {
+  vector[3] mu_p;
+  vector&lt;lower=0&gt;[3] sigma;
+  
+  vector&lt;lower=0&gt;[N] alpha_pr[2];
+  vector&lt;lower=0&gt;[N] delta_pr[2];
+  vector&lt;lower=RTbound,upper=max(minRT)&gt;[N] tau_pr[2];
+}
+
+transformed parameters {
+  vector&lt;lower=0&gt;[N] alpha[2]; // 閾値
+  vector&lt;lower=0&gt;[N] delta[2]; // ドリフト率
+  vector&lt;lower=RTbound, upper=max(minRT)&gt;[N] tau[2]; // 非決定時間
+  
+  for (c in 1:C){
+    alpha[c] = exp(mu_p[1] + sigma[1] * alpha_pr[c]);
+    delta[c] = exp(mu_p[2] + sigma[2] * delta_pr[c]);
+    for (n in 1:N) {
+      tau[c][n]  = Phi_approx(mu_p[3] + sigma[3] * tau_pr[c][n]) * (minRT[n]-RTbound) + RTbound;
+    }
+  }
+}
+
+model {
+  mu_p  ~ normal(0, 1);
+  sigma ~ cauchy(0, 5);
+
+  for(c in 1:C){
+   alpha_pr[c] ~ normal(0, 1);
+   delta_pr[c] ~ normal(0, 1);
+   tau_pr[c]   ~ normal(0, 1);
+  }
+
+  for (n in 1:N) {
+    for (c in 1:C) {
+      // &quot;E&quot;反応, 標的=E
+      target += wiener_lpdf(RT_Re_Te[n,c, :N_Re_Te[n,c]] | alpha[c][n], tau[c][n], 0.5, delta[c][n]);
+      if(N_Rf_Te[n, c]!=0){
+      // &quot;F&quot;反応, 標的=E
+        target += wiener_lpdf(RT_Rf_Te[n,c, :N_Rf_Te[n,c]] | alpha[c][n], tau[c][n], 0.5, -delta[c][n]);
+        }
+      // &quot;F&quot;反応, 標的=F
+      target += wiener_lpdf(RT_Rf_Tf[n,c, :N_Rf_Tf[n,c]] | alpha[c][n], tau[c][n], 0.5, delta[c][n]);
+      if(N_Re_Tf[n,c]!=0){
+      // &quot;E&quot;反応, 標的=F
+        target += wiener_lpdf(RT_Re_Tf[n,c, :N_Re_Tf[n,c]] | alpha[c][n], tau[c][n], 0.5, -delta[c][n]);
+      }
+    }
+  }
+}
+</code></pre>
+</div>
+<div id="stanコードのポイント" class="section level2">
+<h2>Stanコードのポイント</h2>
+<p><code>transformed parameters</code>ブロックでややこしいことをしていますが、ここでは<code>_pr</code>を標準正規分布から推定して、<code>exp</code>で対数のスケールに変換しています。こちらのほうが計算が速いと某先生に教えていただいた書き方です。なので<code>alpha_pr</code>の事前分布は<code>normal</code>になっていますが、実際の事前分布には対数正規分布を置いていることになります。</p>
+<p><code>model</code>ブロックの4つの<code>wiener_lpdf</code>については、正直なところあまり自信がありません…。ここでは“E”反応を上側の閾値 (<span class="math inline">\(\alpha\)</span>) と置いているので、標的はEのときに正しく“E”方向へ情報集積をした試行と、誤って“F”方向に情報集積をした試行ではドリフト率の正負が異なります。が、stanの<code>wiener</code>関数は上方向へのドリフト率しか推定しないので、“F”方向へ行ってしまった試行分については<code>delta</code>の正負をひっくり返すことになります。</p>
+</div>
+<div id="データを整える" class="section level2">
+<h2>データを整える</h2>
+<p>Stanコードを見たらなんとなくわかると思いますが、階層diffusionをStanでやる場合、少し独特の形にデータを整形する必要があります。書くと本題から外れそうなので、このやり方についてはべつの記事を書きます。そちらを参照してください。</p>
+<pre class="r"><code>str(dat)</code></pre>
+<pre><code>## List of 2
+##  $ dataList   :List of 16
+##   ..$ N          : int 3
+##   ..$ N_Re_Te_max: int 39
+##   ..$ N_Rf_Te_max: int 3
+##   ..$ N_Re_Tf_max: int 3
+##   ..$ N_Rf_Tf_max: int 40
+##   ..$ N_Re_Te    : int [1:3, 1:2] 12 37 37 11 37 39
+##   ..$ N_Rf_Te    : int [1:3, 1:2] 0 3 3 1 3 1
+##   ..$ N_Re_Tf    : int [1:3, 1:2] 3 0 0 0 2 2
+##   ..$ N_Rf_Tf    : int [1:3, 1:2] 9 40 40 12 38 38
+##   ..$ RT_Re_Te   : num [1:3, 1:2, 1:39] 0.436 0.578 0.477 0.627 0.658 ...
+##   ..$ RT_Rf_Te   : num [1:3, 1:2, 1:3] -1 0.821 0.424 0.706 0.996 ...
+##   ..$ RT_Re_Tf   : num [1:3, 1:2, 1:3] 1.039 -1 -1 -1 0.844 ...
+##   ..$ RT_Rf_Tf   : num [1:3, 1:2, 1:40] 1.007 0.601 0.505 0.558 0.651 ...
+##   ..$ minRT      : num [1:3(1d)] 0.436 0.404 0.367
+##   ..$ RTbound    : num 0.05
+##   ..$ C          : num 2
+##  $ genInitList:function ()  
+##   ..- attr(*, &quot;srcref&quot;)= &#39;srcref&#39; int [1:8] 105 18 113 3 18 3 105 113
+##   .. ..- attr(*, &quot;srcfile&quot;)=Classes &#39;srcfilecopy&#39;, &#39;srcfile&#39; &lt;environment: 0x000000001e7487e0&gt;</code></pre>
+<p>こういう形に整形できたら、データの準備は完了です。</p>
+</div>
+<div id="mcmc" class="section level2">
+<h2>MCMC!</h2>
+<p>(*´Д`)ﾊｧﾊｧしてみましょう。</p>
+<pre class="r"><code>library(rstan)
+mod &lt;- rstan::stan_model(&quot;stanmodel.stan&quot;)
+fit &lt;- rstan::sampling(mod,
+                       data = dat$dataList,
+                       iter = 4000,
+                       warmup = 1000,
+                       chains = 4,
+                       cores = 4,
+                       init = dat$genInitList)</code></pre>
+<p>400試行分のデータ (3人の合計) で3分ぐらいで収束しました。中身を見てみます。</p>
+<pre class="r"><code>print(fit)</code></pre>
+<pre><code>## Inference for Stan model: 191213_ddm.
+## 4 chains, each with iter=4000; warmup=1000; thin=1; 
+## post-warmup draws per chain=3000, total post-warmup draws=12000.
+## 
+##                 mean se_mean   sd   2.5%    25%    50%    75%  97.5% n_eff Rhat
+## mu_p[1]         0.26    0.00 0.12  -0.04   0.20   0.28   0.35   0.45  1185 1.01
+## mu_p[2]         0.63    0.01 0.28  -0.07   0.48   0.68   0.83   0.99   576 1.00
+## mu_p[3]         0.48    0.01 0.48  -0.68   0.23   0.58   0.82   1.16  1506 1.01
+## sigma[1]        0.25    0.00 0.19   0.02   0.12   0.21   0.33   0.73  1604 1.01
+## sigma[2]        0.48    0.01 0.42   0.03   0.20   0.38   0.65   1.51   963 1.00
+## sigma[3]        5.71    0.10 3.46   1.07   3.35   4.96   7.20  14.72  1232 1.01
+## alpha_pr[1,1]   0.77    0.01 0.47   0.07   0.42   0.69   1.05   1.87  5741 1.00
+## alpha_pr[1,2]   1.25    0.01 0.55   0.31   0.87   1.20   1.58   2.49  5289 1.00
+## alpha_pr[1,3]   0.71    0.01 0.42   0.06   0.41   0.66   0.95   1.71  4429 1.00
+## alpha_pr[2,1]   0.73    0.01 0.46   0.05   0.39   0.66   1.00   1.82  5765 1.00
+## alpha_pr[2,2]   0.31    0.01 0.29   0.01   0.10   0.23   0.42   1.05  2185 1.00
+## alpha_pr[2,3]   0.76    0.01 0.44   0.07   0.44   0.71   1.01   1.74  4705 1.00
+## delta_pr[1,1]   0.26    0.01 0.26   0.01   0.08   0.18   0.35   0.93  2641 1.00
+## delta_pr[1,2]   0.84    0.01 0.43   0.11   0.54   0.81   1.10   1.81  4086 1.00
+## delta_pr[1,3]   0.92    0.01 0.44   0.15   0.62   0.89   1.18   1.92  5169 1.00
+## delta_pr[2,1]   0.88    0.01 0.47   0.10   0.54   0.84   1.16   1.95  5666 1.00
+## delta_pr[2,2]   0.90    0.01 0.44   0.13   0.59   0.86   1.15   1.87  4930 1.00
+## delta_pr[2,3]   0.89    0.01 0.43   0.15   0.59   0.86   1.15   1.83  4584 1.00
+## tau_pr[1,1]     0.12    0.00 0.06   0.05   0.08   0.11   0.15   0.27   502 1.01
+## tau_pr[1,2]     0.16    0.00 0.07   0.06   0.11   0.14   0.19   0.32   595 1.01
+## tau_pr[1,3]     0.33    0.00 0.08   0.16   0.28   0.35   0.40   0.43  2536 1.00
+## tau_pr[2,1]     0.32    0.00 0.08   0.13   0.27   0.34   0.39   0.43  2426 1.00
+## tau_pr[2,2]     0.28    0.00 0.09   0.12   0.21   0.28   0.35   0.43  3786 1.00
+## tau_pr[2,3]     0.14    0.00 0.06   0.06   0.09   0.13   0.17   0.27   990 1.00
+## alpha[1,1]      1.57    0.00 0.15   1.30   1.46   1.55   1.65   1.92  5156 1.00
+## alpha[1,2]      1.74    0.00 0.17   1.47   1.61   1.72   1.85   2.11  3595 1.00
+## alpha[1,3]      1.54    0.00 0.11   1.35   1.47   1.53   1.61   1.79  5332 1.00
+## alpha[2,1]      1.55    0.00 0.16   1.28   1.45   1.54   1.64   1.90  5225 1.00
+## alpha[2,2]      1.40    0.00 0.12   1.18   1.32   1.40   1.48   1.62  1741 1.00
+## alpha[2,3]      1.56    0.00 0.13   1.34   1.48   1.55   1.64   1.84  6347 1.00
+## delta[1,1]      2.12    0.01 0.40   1.32   1.85   2.15   2.42   2.79  1267 1.00
+## delta[1,2]      2.74    0.00 0.29   2.22   2.54   2.72   2.92   3.35  5559 1.00
+## delta[1,3]      2.81    0.00 0.28   2.29   2.62   2.79   2.99   3.39  5333 1.00
+## delta[2,1]      2.80    0.01 0.43   2.02   2.52   2.76   3.05   3.76  5158 1.00
+## delta[2,2]      2.78    0.00 0.28   2.23   2.59   2.77   2.97   3.35  4385 1.00
+## delta[2,3]      2.78    0.00 0.28   2.28   2.59   2.76   2.96   3.35  6174 1.00
+## tau[1,1]        0.39    0.00 0.02   0.35   0.38   0.39   0.40   0.41  5556 1.00
+## tau[1,2]        0.37    0.00 0.01   0.35   0.36   0.37   0.38   0.38  5145 1.00
+## tau[1,3]        0.36    0.00 0.01   0.34   0.36   0.36   0.37   0.37  1592 1.00
+## tau[2,1]        0.43    0.00 0.01   0.40   0.42   0.43   0.43   0.44  1566 1.00
+## tau[2,2]        0.39    0.00 0.01   0.37   0.39   0.39   0.40   0.40  1620 1.00
+## tau[2,3]        0.33    0.00 0.01   0.31   0.33   0.33   0.34   0.34  7076 1.00
+## lp__          146.68    0.19 5.88 134.22 142.87 147.03 150.84 157.16   986 1.01
+## 
+## Samples were drawn using NUTS(diag_e) at Thu Dec 19 15:35:12 2019.
+## For each parameter, n_eff is a crude measure of effective sample size,
+## and Rhat is the potential scale reduction factor on split chains (at 
+## convergence, Rhat=1).</code></pre>
+<p>トレースプロットもいい感じです。収束感が感じられるので<code>inc_warmup = T</code>派です (そんな派閥はない)。</p>
+<pre class="r"><code>rstan::traceplot(fit, pars = c(&quot;alpha&quot;, &quot;delta&quot;, &quot;tau&quot;), inc_warmup = T)</code></pre>
+<p><img src="../../post/2019-12-16-stan-diffusion_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><span class="math inline">\(\delta\)</span>の事後分布をプロットしてみます。最近<code>tidybayes</code>にはまっています。手がかり条件は1: 無効、2: 有効、となっています。今回は3人分のデータを使ったので、参加者ごとに<code>facet</code>に分けてプロットしてみました。</p>
+<pre class="r"><code>library(tidybayes)
+fit %&gt;% 
+  tidybayes::spread_draws(delta[valid,subj]) %&gt;%
+  ggplot2::ggplot(aes(x = delta, y = as.factor(valid))) +
+  tidybayes::stat_pointintervalh() +
+  theme(panel.grid.major.y = element_blank(),
+        axis.title = element_text(size = 15)) +
+  ylab(&quot;手がかり条件&quot;) +
+  xlab(expression(delta)) +
+  facet_wrap(~subj)</code></pre>
+<p><img src="../../post/2019-12-16-stan-diffusion_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>このように、反応時間と正答率の同時確率分布を用いて、パラメータを推定することができました。空間手がかり課題で注意が向いている・いない条件の違いがドリフト率に反映されていそうなことがわかります（といいたいところですが、2番と3番の人ではあんまり違いがないですね）。今回は正答率が極端に高い課題を使ったのであんまり推定結果がおもしろくないのですが、反応時間と正答率のトレードオフが起こるような課題を使うともっと楽しいと思います。</p>
+</div>
+<div id="まとめ" class="section level2">
+<h2>まとめ</h2>
+<p>ベイズモデリングをする動機づけはいろいろあると思いますが、私にとっては実験で得られたデータからありったけの情報を搾り取ることができる (場合がある) というのが一番の動機です。diffusionモデルでは各試行の正答率と反応時間を同時に考慮することができて、そういう点では自分がやりたいことに近いと感じます。奥深いモデルですが、比較的容易に実装できるところも魅力です。皆さんもぜひdiffusionで(*´Д`)ﾊｧﾊｧしましょう。</p>
+</div>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="../../post/2020-02-23-experimental-psychologists/">実験心理学のための統計モデリング入門</a></h4>
+    <h5>February 23, 2020</h5>
+    
+<a href="../../tags/stats"><kbd class="item-tag">stats</kbd></a>
+
+<a href="../../tags/stan"><kbd class="item-tag">stan</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

@@ -6,44 +6,35 @@
     <description>Recent content in Tags on Scribbles that matter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 17 Dec 2019 09:10:14 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 23 Feb 2020 21:13:14 -0500</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>diffusion</title>
-      <link>/tags/diffusion/</link>
-      <pubDate>Tue, 17 Dec 2019 09:10:14 -0500</pubDate>
+      <title>stan</title>
+      <link>/tags/stan/</link>
+      <pubDate>Sun, 23 Feb 2020 21:13:14 -0500</pubDate>
       
-      <guid>/tags/diffusion/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>r</title>
-      <link>/tags/r/</link>
-      <pubDate>Tue, 17 Dec 2019 09:10:14 -0500</pubDate>
-      
-      <guid>/tags/r/</guid>
+      <guid>/tags/stan/</guid>
       <description></description>
     </item>
     
     <item>
       <title>stats</title>
       <link>/tags/stats/</link>
-      <pubDate>Tue, 17 Dec 2019 09:10:14 -0500</pubDate>
+      <pubDate>Sun, 23 Feb 2020 21:13:14 -0500</pubDate>
       
       <guid>/tags/stats/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>stan</title>
-      <link>/tags/stan/</link>
+      <title>diffusion</title>
+      <link>/tags/diffusion/</link>
       <pubDate>Mon, 16 Dec 2019 21:13:14 -0500</pubDate>
       
-      <guid>/tags/stan/</guid>
+      <guid>/tags/diffusion/</guid>
       <description></description>
     </item>
     
