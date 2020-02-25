@@ -6,10 +6,19 @@
     <description>Recent content in Categories on Scribbles that matter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 23 Feb 2020 21:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 25 Feb 2020 21:13:14 -0500</lastBuildDate>
     
 	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>R</title>
+      <link>/categories/r/</link>
+      <pubDate>Tue, 25 Feb 2020 21:13:14 -0500</pubDate>
+      
+      <guid>/categories/r/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Stan</title>
@@ -17,15 +26,6 @@
       <pubDate>Sun, 23 Feb 2020 21:13:14 -0500</pubDate>
       
       <guid>/categories/stan/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R</title>
-      <link>/categories/r/</link>
-      <pubDate>Mon, 16 Dec 2019 21:13:14 -0500</pubDate>
-      
-      <guid>/categories/r/</guid>
       <description></description>
     </item>
     

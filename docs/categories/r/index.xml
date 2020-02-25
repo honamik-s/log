@@ -6,10 +6,19 @@
     <description>Recent content in R on Scribbles that matter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 16 Dec 2019 21:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 25 Feb 2020 21:13:14 -0500</lastBuildDate>
     
 	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>雑なエントロピー入門</title>
+      <link>/post/2020-02-25-entropy/</link>
+      <pubDate>Tue, 25 Feb 2020 21:13:14 -0500</pubDate>
+      
+      <guid>/post/2020-02-25-entropy/</guid>
+      <description>エントロピーにたどり着けない 「社会科学のためのベイズ統計モデリング」第6章を読んでいて、エントロピーにたどり着けなかったので、簡単な例から考</description>
+    </item>
     
     <item>
       <title>Stanで階層diffusionモデル</title>

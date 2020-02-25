@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ja-jp">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>雑なエントロピー入門</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: green;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="../../css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.63.2" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">雑なエントロピー入門</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="../../">Home</a></li>
+                            
+                                <li><a href="../../about/">About</a></li>
+                            
+                                <li><a href="../../post/">Posts</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://clemhk.wordpress.com"><i class="fa fa-wordpress"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/hnm_clem/"><i class="fa fa-twitter"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>雑なエントロピー入門</h2>
+        <h5>February 25, 2020</h5>
+        
+<a href="../../tags/stats"><kbd class="item-tag">stats</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content">
+
+
+<div id="エントロピーにたどり着けない" class="section level1">
+<h1>エントロピーにたどり着けない</h1>
+<p>「社会科学のためのベイズ統計モデリング」第6章を読んでいて、エントロピーにたどり着けなかったので、簡単な例から考えてみることにしました。本の説明にケチをつけているわけではなく、単に自分が突然現れた<span class="math inline">\(log\)</span>に対応できなかっただけです。</p>
+</div>
+<div id="情報量" class="section level1">
+<h1>情報量</h1>
+<p>まず、情報とは「結果を知ることで不確実さが減ること」を示します。この時点でよくわからないので、具体的に考えます。</p>
+<p>「雨」か「晴れ」の2種類しか天気が存在しない世界を想像してください（このたとえもよくわからないですね。すみません）。前日の時点では、次の日の天気はまったくわからないので不確実さが大きいわけですが、次の日の朝になったら嫌でも今日の天気がどちらかはわかります。前の日に比べて不確実さが減りました。これが<strong>情報</strong>です。このような感じで、2つの選択肢 (ありうる事象) の中から1つが選ばれたときの<strong>情報量</strong>を1ビット、と呼ぶことにします。</p>
+<p>晴天・雨天に加えて、「曇り」「雪」という天気が存在するとします。このときの<strong>情報量</strong>は2ビットです。4つの事象を2つずつのグループに分けてどちらかを選ぶことでまず1ビット、選ばれたグループ内の2つの事象から1つを選ぶことで1ビット、合計2ビットです (だったと思います。ちょっとうろ覚えで書きました)。</p>
+<p>2つから1つで1ビット、4つから2つで2ビット、…と順番に並べてみると、<span class="math inline">\(2^n\)</span>個の中から1つを選ぶときの情報量が<span class="math inline">\(n\)</span>ビットになることがわかります。</p>
+<p>ここで、<span class="math inline">\(k\)</span>個の事象が起こるときの情報量を考えると</p>
+<p><span class="math display">\[k=2^n\]</span></p>
+<p>となって、情報量<span class="math inline">\(n\)</span>は</p>
+<p><span class="math display">\[n=log_2k\]</span></p>
+<p>になります。</p>
+<p><span class="math inline">\(k\)</span>個の事象が同じ確率で起こるとすると</p>
+<p><span class="math display">\[p=\frac{1}{k}\]</span></p>
+<p>なので、<span class="math inline">\(k=\frac{1}{p}\)</span>と書くことができて、</p>
+<p><span class="math display">\[n=log_2\frac{1}{p}\]</span></p>
+<p>となります。これが確率<span class="math inline">\(p\)</span>で生じる事象が起こるときの情報量になります。</p>
+</div>
+<div id="エントロピー" class="section level1">
+<h1>エントロピー</h1>
+<p>ここまでの話は起こりうる結果が1つのときの話でした。起こりうる結果が2つあって、それぞれ確率<span class="math inline">\(p\)</span>と確率<span class="math inline">\(q\)</span>で生じるとすると、情報量はどうなるでしょう？</p>
+<p>まず起こりうる事象はこの2つだけなので</p>
+<p><span class="math display">\[p+q=1\]</span></p>
+<p>です。各事象の情報量は<span class="math inline">\(log_2\frac{1}{p}\)</span>と<span class="math inline">\(log_2\frac{1}{q}\)</span>になります。この2つの結果が起こりうるときの不確かさをエントロピーと呼んで、</p>
+<p><span class="math display">\[H=plog_2\frac{1}{p}+qlog_2\frac{1}{q}\]</span></p>
+<p>なんで<span class="math inline">\(p\)</span>や<span class="math inline">\(q\)</span>をかけるのかは後述します。まずこの<span class="math inline">\(H\)</span>を図示したので、見てください。</p>
+<pre class="r"><code>fun_ent &lt;- function(p) {
+  p*log2(1/p) + (1-p)*log2(1/(1-p))
+}
+ggplot2::ggplot(data.frame(x = c(0, 1)), aes(x)) +
+  ggplot2::stat_function(fun = fun_ent, colour = &quot;skyblue4&quot;) +
+  theme(panel.grid = element_blank()) +
+  labs(y = &quot;エントロピー&quot;, 
+       x = &quot;片方の事象が起こる確率p&quot;)</code></pre>
+<pre><code>## Warning: Removed 2 rows containing missing values (geom_path).</code></pre>
+<p><img src="../../post/2020-02-25-entropy_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>片方の事象が起こる確率<span class="math inline">\(p\)</span>が0.5、つまり2つのできごとが起こる可能性が五分五分のときにエントロピーが最大になっています。さっきの足し算とかけ算はこのためです。試しに<span class="math inline">\(p\)</span>や<span class="math inline">\(q\)</span>をかけるのをやめてみると、こんな感じです。</p>
+<pre class="r"><code>fun_ent_2 &lt;- function(p) {
+  log2(1/p) + log2(1/(1-p))
+}
+ggplot2::ggplot(data.frame(x = c(0, 1)), aes(x)) +
+  ggplot2::stat_function(fun = fun_ent_2, colour = &quot;skyblue4&quot;) +
+  theme(panel.grid = element_blank()) +
+  labs(title = &quot;確率をかけないとき&quot;,
+       x = &quot;片方の事象が起こる確率p&quot;)</code></pre>
+<p><img src="../../post/2020-02-25-entropy_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>五分五分のときに一番値が小さくなってしまいます。諸事情で五分五分のときの値が一番大きくなるような指標がほしいので、<span class="math inline">\(p\)</span>と<span class="math inline">\(q\)</span>をそれぞれ<span class="math inline">\(log_2\frac{1}{p}\)</span>と<span class="math inline">\(log_2\frac{1}{q}\)</span>にかけているようです。</p>
+<p>エントロピーのグラフで<code>Removed 2 rows containing missing values (geom_path)</code>となっているのは<span class="math inline">\(p=0\)</span>と<span class="math inline">\(p=1\)</span>のときですね。</p>
+<pre class="r"><code>fun_ent(0)</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<pre class="r"><code>fun_ent(1)</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<p>ロピタルの定理より<span class="math inline">\(lim_{p_i \to 0} p_ilog(p_i)=0\)</span>らしいので、エントロピーを計算するときには<span class="math inline">\(0log(0)=0\)</span>と仮定するのがよいとMcElreath (2016) には書いてありました。</p>
+<p>ちなみに底2ではなく自然対数を使っても形には影響ありません。</p>
+<pre class="r"><code>fun_ent_3 &lt;- function(p) {
+  p*log(1/p) + (1-p)*log(1/(1-p))
+}
+ggplot2::ggplot(data.frame(x = c(0, 1)), aes(x)) +
+  ggplot2::stat_function(fun = fun_ent_3, colour = &quot;skyblue4&quot;) +
+  theme(panel.grid = element_blank()) +
+  labs(y = &quot;エントロピー&quot;, 
+       x = &quot;片方の事象が起こる確率p&quot;)</code></pre>
+<pre><code>## Warning: Removed 2 rows containing missing values (geom_path).</code></pre>
+<p><img src="../../post/2020-02-25-entropy_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>ここまで来たら「社会科学のためのベイズ統計モデリング」でもエントロピーにたどり着けそうですね。</p>
+</div>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="../../post/2020-02-23-experimental-psychologists/">実験心理学者のための統計モデリング入門</a></h4>
+    <h5>February 23, 2020</h5>
+    
+<a href="../../tags/stats"><kbd class="item-tag">stats</kbd></a>
+
+<a href="../../tags/stan"><kbd class="item-tag">stan</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="../../post/2019-12-16-stan-diffusion/">Stanで階層diffusionモデル</a></h4>
+    <h5>December 16, 2019</h5>
+    
+<a href="../../tags/stats"><kbd class="item-tag">stats</kbd></a>
+
+<a href="../../tags/diffusion"><kbd class="item-tag">diffusion</kbd></a>
+
+<a href="../../tags/stan"><kbd class="item-tag">stan</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+
