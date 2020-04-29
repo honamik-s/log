@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Honami Kobayashi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 25 Feb 2020 21:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 29 Apr 2020 21:13:14 -0500</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>実験心理学者のためのJavaScript</title>
+      <link>/post/2020-04-29-exp-javascript/</link>
+      <pubDate>Wed, 29 Apr 2020 21:13:14 -0500</pubDate>
+      
+      <guid>/post/2020-04-29-exp-javascript/</guid>
+      <description>視覚探索課題を作りたい 昨今の情勢のおかげでweb実験の需要が高まっています。最近ではjsPsych、lab.jsなど気軽に使えるツールが多く</description>
+    </item>
     
     <item>
       <title>雑なエントロピー入門</title>

@@ -4,17 +4,37 @@
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2020-02-25T21:13:14-05:00</lastmod>
+    <lastmod>2020-04-29T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/exp/</loc>
+    <lastmod>2020-04-29T21:13:14-05:00</lastmod>
   </url>
   
   <url>
     <loc>/</loc>
-    <lastmod>2020-02-25T21:13:14-05:00</lastmod>
+    <lastmod>2020-04-29T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/javascript/</loc>
+    <lastmod>2020-04-29T21:13:14-05:00</lastmod>
   </url>
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2020-02-25T21:13:14-05:00</lastmod>
+    <lastmod>2020-04-29T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-04-29T21:13:14-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2020-04-29-exp-javascript/</loc>
+    <lastmod>2020-04-29T21:13:14-05:00</lastmod>
   </url>
   
   <url>
@@ -24,11 +44,6 @@
   
   <url>
     <loc>/tags/stats/</loc>
-    <lastmod>2020-02-25T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
     <lastmod>2020-02-25T21:13:14-05:00</lastmod>
   </url>
   
