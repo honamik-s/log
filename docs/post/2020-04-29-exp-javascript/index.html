@@ -5,7 +5,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Categories</title>
+        <title>実験心理学者のためのJavaScript</title>
         
         <style>
 
@@ -22,7 +22,7 @@
 </style>
 
 
-<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../../css/main.css">
 
 
 
@@ -68,9 +68,6 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.63.2" />
         
-            <link href="../categories/index.xml" rel="alternate" type="application/rss&#43;xml" title="Honami Kobayashi" />
-            <link href="../categories/index.xml" rel="feed" type="application/rss&#43;xml" title="Honami Kobayashi" />
-        
 
         
 
@@ -88,7 +85,7 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand visible-xs" href="#">Categories</a>
+                    <a class="navbar-brand visible-xs" href="#">実験心理学者のためのJavaScript</a>
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -99,11 +96,11 @@
                     
                         <ul class="nav navbar-nav">
                             
-                                <li><a href="../">Home</a></li>
+                                <li><a href="../../">Home</a></li>
                             
-                                <li><a href="../about/">About</a></li>
+                                <li><a href="../../about/">About</a></li>
                             
-                                <li><a href="../post/">Posts</a></li>
+                                <li><a href="../../post/">Posts</a></li>
                             
                         </ul>
                     
@@ -123,43 +120,57 @@
 
 <main>
 
-    <h2>Categories</h2>
-
-     <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="../categories/r/">R</a></h4>
-    <h5>May 12, 2020</h5>
-    
+    <div>
+        <h2>実験心理学者のためのJavaScript</h2>
+        <h5>April 29, 2020</h5>
+        
+<a href="../../tags/exp"><kbd class="item-tag">exp</kbd></a>
 
 
+    </div>
+
+    <div align="start" class="content">
+
+
+<div id="視覚探索課題を作りたい" class="section level1">
+<h1>視覚探索課題を作りたい</h1>
+<p>昨今の情勢のおかげでweb実験の需要が高まっています。最近では<a href="https://www.jspsych.org/">jsPsych</a>、<a href="https://lab.js.org/">lab.js</a>など気軽に使えるツールが多くあり、単純な課題ならテンプレートが用意されているので、プログラミングをしなくてもすぐに実施することができます。lab.jsには<a href="https://github.com/FelixHenninger/lab.js/tree/master/tasks">これだけ多くのテンプレート</a>が用意されています。すごいですね。</p>
+<p>私は視覚探索課題のデータを主食にして生きているので、lab.jsに視覚探索課題が用意されているのを見て小躍りしたのですが、よく見てみたところ、私が普段使っている課題とは若干細部が異なっていることに気づきました。以下のようにアレンジしないと、普段通りの実験はできなさそうです。</p>
+<ol style="list-style-type: decimal">
+<li>画面上の刺激数 (セットサイズ) が複数条件用意されているのを、1条件のみにしたい</li>
+<li>画面上の妨害刺激の回転角度を変えたい</li>
+<li>「標的刺激の有無」を答える課題を、「標的刺激の向き」を答える課題にしたい</li>
+<li>刺激の並びが整いすぎないように、適度に座標をずらして (ジター) 呈示したい</li>
+<li>同じ刺激レイアウトを何度も使えるようにしたい</li>
+</ol>
+<p>このうち(1)はlab.jsのBuilder機能を使えば簡単にできますが、それ以外はwebブラウザとかかわりの深いプログラミング言語であるJavaScriptを使ってスクリプトを書くことで解決できます。そこで、このチュートリアルでは、lab.jsにあらかじめ用意されている視覚探索課題をアレンジして(1)~(5)の要件を満たすような視覚探索課題を作ることを目標にします。</p>
 </div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="../categories/stan/">Stan</a></h4>
-    <h5>February 23, 2020</h5>
-    
-
-
+<div id="チュートリアル-実験心理学者のためのjavascript" class="section level1">
+<h1>チュートリアル: 実験心理学者のためのJavaScript</h1>
+<ol style="list-style-type: decimal">
+<li><a href="https://www.notion.so/JavaScript-265e1c9350ad44cabcb6d62ba7cd5af2">JavaScript入門 (1)</a> (製作中)</li>
+<li><a href="https://www.notion.so/JavaScript-2-38459ca3d20f4de394eadc9dc211fa16">JavaScript入門 (2)</a> (製作中)</li>
+<li><a href="https://www.notion.so/lab-js-1-919003c5d7e44dbdabddb6bcee74c111">lab.jsの視覚探索課題をアレンジする (1)</a> (製作中)</li>
+<li><a href="https://www.notion.so/lab-js-1-c395eeb6f53744f8b51dbf50fd133f50">lab.jsの視覚探索課題をアレンジする (2)</a> (製作中)</li>
+</ol>
 </div>
- 
+<div id="役に立ちそうなリンク集" class="section level1">
+<h1>役に立ちそうなリンク集</h1>
+<ul>
+<li><a href="https://lab.js.org/">lab.js</a></li>
+<li><a href="https://labjs.readthedocs.io/en/latest/">lab.jsのドキュメント</a></li>
+</ul>
+</div>
+</div>
+
+    
+    
+    
+
+    
+    
 
 </main>
-
-
 
         <footer>
             <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>

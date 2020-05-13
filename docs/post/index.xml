@@ -6,18 +6,18 @@
     <description>Recent content in Posts on Honami Kobayashi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 29 Apr 2020 21:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 12 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>実験心理学者のためのJavaScript</title>
-      <link>/post/2020-04-29-exp-javascript/</link>
-      <pubDate>Wed, 29 Apr 2020 21:13:14 -0500</pubDate>
+      <title>jsPsychの実験をQualtricsに貼り込む</title>
+      <link>/post/200512_jspsych-on-qualt/</link>
+      <pubDate>Tue, 12 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>/post/2020-04-29-exp-javascript/</guid>
-      <description>視覚探索課題を作りたい 昨今の情勢のおかげでweb実験の需要が高まっています。最近ではjsPsych、lab.jsなど気軽に使えるツールが多く</description>
+      <guid>/post/200512_jspsych-on-qualt/</guid>
+      <description>QualtricsでjsPsychの実験を埋め込んで実行するためのコードなどを紹介します。こちらのページをおおいに参考にしました。 GitHu</description>
     </item>
     
     <item>
