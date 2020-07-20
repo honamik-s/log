@@ -95,7 +95,7 @@ some_data %>%
 
 ## Stanコードを書く
 
-```{stan output.var = "mod"}
+```
 data {
   int<lower=1> N;      // 参加者数
   int C;               // 条件数
@@ -171,6 +171,11 @@ model {
 }
 
 ```
+
+```{r echo=FALSE}
+fit <- readRDS("200720_diff.RDS")
+```
+
 
 
 ## Stanコードのポイント

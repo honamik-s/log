@@ -1,0 +1,12 @@
+---
+title: "lab.jsの実験をQualtricsに貼り込む"
+output: html_document
+author: "Honami K"
+date: '2020-05-21'
+categories: []
+tags: ["exp", "JS", "Qualtrics"]
+---
+
+# 実験をアップロード
+
+まずlab.jsで作った実験を、手元のPCにダウンロードします。

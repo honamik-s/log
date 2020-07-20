@@ -6,10 +6,19 @@
     <description>Recent content in exp on Honami Kobayashi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 12 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/exp/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>lab.jsの実験をQualtricsに貼り込む</title>
+      <link>/200521_labjs_on_qualt/</link>
+      <pubDate>Thu, 21 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/200521_labjs_on_qualt/</guid>
+      <description>実験をアップロード まずlab.jsで作った実験を、手元のPCにダウンロードします。</description>
+    </item>
     
     <item>
       <title>jsPsychの実験をQualtricsに貼り込む</title>

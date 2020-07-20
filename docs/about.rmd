@@ -12,7 +12,7 @@ draft: true
 
 ## 論文
 
-- Kobayashi, H., & Ogawa, H. (2020). [Contextual cueing facilitation arises early in the time course of visual search: An investigation with the speed-accuracy tradeoff task.](https://link.springer.com/article/10.3758/s13414-020-02028-9) *Attention, Perception, & Psychophysics*, *Advanced online publication*.
+- Kobayashi, H., & Ogawa, H. (2020). [Contextual cueing facilitation arises early in the time course of visual search: An investigation with the speed-accuracy tradeoff task.](https://link.springer.com/article/10.3758/s13414-020-02028-9) *Attention, Perception, & Psychophysics*, *Advance online publication*.
 
 
 ## 学会発表

@@ -6,10 +6,19 @@
     <description>Recent content on Honami Kobayashi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 12 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>lab.jsの実験をQualtricsに貼り込む</title>
+      <link>/200521_labjs_on_qualt/</link>
+      <pubDate>Thu, 21 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/200521_labjs_on_qualt/</guid>
+      <description>実験をアップロード まずlab.jsで作った実験を、手元のPCにダウンロードします。</description>
+    </item>
     
     <item>
       <title>jsPsychの実験をQualtricsに貼り込む</title>
@@ -63,6 +72,24 @@
       
       <guid>/about_1/</guid>
       <description>R, stan, モデリングなどに関する情報を（主に自分用に）まとめています。</description>
+    </item>
+    
+    <item>
+      <title>Javascript for Exp</title>
+      <link>/javascript-for-exp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/javascript-for-exp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>資料</title>
+      <link>/resource/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resource/</guid>
+      <description>オンライン実験関連の資料 lab.jsやjsPsychを使ってオンライン実験を作り、実施するうえで気づいたことや勉強したことをまとめています。</description>
     </item>
     
   </channel>
