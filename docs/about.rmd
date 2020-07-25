@@ -8,14 +8,31 @@ draft: true
 
 認知モデリングを使った情報処理過程の解明にも取り組んでいます。
 
+# 主な研究テーマ
 
+- 時空間的統計情報の学習・利用メカニズムの解明
+    - 文脈手がかり効果による注意処理促進メカニズム
+    - 時間次元における確率情報の学習・利用メカニズム
+    - 統計学習によって形成される記憶表象についての検討
+- 統計モデリングを用いた視覚的注意の空間特性の解明
+- 単語の並列処理に視覚的注意が及ぼす影響についての検討
+
+
+# 業績・発表予定
 
 ## 論文
 
 - Kobayashi, H., & Ogawa, H. (2020). [Contextual cueing facilitation arises early in the time course of visual search: An investigation with the speed-accuracy tradeoff task.](https://link.springer.com/article/10.3758/s13414-020-02028-9) *Attention, Perception, & Psychophysics*, *Advance online publication*.
 
 
+## 発表予定
+
+- Kobayashi, H., Muto, H., Shimizu, H., & Ogawa, H. (2021). Effects of interstimulus spacing on flanker interference investigated by hierarchical diffusion modeling. The 18th Annual Convention of the Japanese Society for Cognitive Psychology, Kanazawa Institute of Technology, March 3-4.
+
+
 ## 学会発表
+
+- Kobayashi, H., & Ogawa, H. (2020/06/19). An early locus of contextual cueing: An investigation with the speed-accuracy tradeoff task. Paper presented at Vision Sciences Society (virtual meeting).
 
 - 小林穂波・小川洋和 (2019/12/1)． 文脈手がかりは視覚探索処理の初期段階を促進する. 日本基礎心理学会第38回大会, 神戸大学（兵庫県神戸市）
 
@@ -28,9 +45,10 @@ draft: true
 - 小林穂波・小川洋和 (2019/5/26)．自己観の変化が視覚的注意のスポットライトの大きさを調節する．日本認知心理学会第17回大会，京都テルサ（京都府京都市）. 
 
 
-## 研究会での発表
+## 研究会発表
 
 - 小林穂波・小川洋和（2019/3/3)．自己に関する概念の変化が視覚的注意の焦点の範囲を調節する．日本心理学会「注意と認知」研究会 第17回合宿研究会．
+
 
 
 ## 受賞
