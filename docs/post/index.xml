@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Honami Kobayashi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 12 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 01 Dec 2020 10:13:14 -0500</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ベイズ塾と私の2年間</title>
+      <link>/post/2020-12-01-bayes-advent/</link>
+      <pubDate>Tue, 01 Dec 2020 10:13:14 -0500</pubDate>
+      
+      <guid>/post/2020-12-01-bayes-advent/</guid>
+      <description>こんにちは、小林です。 認知心理学・実験心理学が専門で、主に視覚的注意の研究をしています。本好きです。好きなジャンルはSFとヴィクトリア朝文学</description>
+    </item>
     
     <item>
       <title>jsPsychの実験をQualtricsに貼り込む</title>

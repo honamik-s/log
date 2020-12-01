@@ -22,7 +22,7 @@ draft: true
 
 ## 論文
 
-- Kobayashi, H., & Ogawa, H. (in press). Priming with horizontal reading influences the deployment of visual attention during word processing. *Japanese Psychological Research*.
+- Kobayashi, H., & Ogawa, H. (in press). [Priming with horizontal reading influences the deployment of visual attention during word processing](https://doi.org/10.1111/jpr.12315). *Japanese Psychological Research*.
 
 - Kobayashi, H., & Ogawa, H. (2020). [Contextual cueing facilitation arises early in the time course of visual search: An investigation with the speed-accuracy tradeoff task.](https://link.springer.com/article/10.3758/s13414-020-02028-9) *Attention, Perception, & Psychophysics*, *82*, 2851 - 2861.
 
@@ -33,6 +33,10 @@ draft: true
 
 
 ## 学会発表
+
+- 小林 穂波・小川 洋和 (2020). Investigating visual attention with statistical modeling: The time course of contextual cueing effect 　日本基礎心理学会第39回大会　オンライン若手セッション, 北海道大学 (web開催), 11月7日-11月17日.
+
+- 小林 穂波 (2020). 文脈手がかりは視覚探索の初期段階を促進する──SAT課題と統計モデリングを用いた検討── 　公募シンポジウム「心理学の諸領域におけるベイズ統計モデリングの実践」, 東洋大学（Web開催）, 9月8日-11月2日.（企画：武藤 拓之，難波 修史，司会：武藤 拓之，話題提供：小林 穂波，難波 修史，水野 景子，横山 仁史，松井 大，指定討論：小杉 考司）
 
 - Kobayashi, H., & Ogawa, H. (2020/06/19). An early locus of contextual cueing: An investigation with the speed-accuracy tradeoff task. Paper presented at Vision Sciences Society (virtual meeting).
 

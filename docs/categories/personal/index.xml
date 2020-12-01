@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Personal on Honami Kobayashi</title>
+    <link>/categories/personal/</link>
+    <description>Recent content in Personal on Honami Kobayashi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Tue, 01 Dec 2020 10:13:14 -0500</lastBuildDate>
+    
+	<atom:link href="/categories/personal/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ベイズ塾と私の2年間</title>
+      <link>/post/2020-12-01-bayes-advent/</link>
+      <pubDate>Tue, 01 Dec 2020 10:13:14 -0500</pubDate>
+      
+      <guid>/post/2020-12-01-bayes-advent/</guid>
+      <description>こんにちは、小林です。 認知心理学・実験心理学が専門で、主に視覚的注意の研究をしています。本好きです。好きなジャンルはSFとヴィクトリア朝文学</description>
+    </item>
+    
+  </channel>
+</rss>
