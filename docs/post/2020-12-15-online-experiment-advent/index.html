@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ja-jp">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>オンライン実験をがんばった話</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #009bb2;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="../../css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.63.2" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">オンライン実験をがんばった話</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="../../">Home</a></li>
+                            
+                                <li><a href="../../about/">業績・発表予定</a></li>
+                            
+                                <li><a href="../../resource/">資料</a></li>
+                            
+                                <li><a href="../../post/">ブログ</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://clemhk.wordpress.com"><i class="fa fa-wordpress"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/hnm_clem/"><i class="fa fa-twitter"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>オンライン実験をがんばった話</h2>
+        <h5>December 15, 2020</h5>
+        
+<a href="../../tags/r"><kbd class="item-tag">R</kbd></a>
+
+<a href="../../tags/labjs"><kbd class="item-tag">labjs</kbd></a>
+
+<a href="../../tags/jspsych"><kbd class="item-tag">jsPsych</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content">
+<link href="../../rmarkdown-libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="../../rmarkdown-libs/anchor-sections/anchor-sections.js"></script>
+
+
+<p>今年はいろいろありましたね。</p>
+<p>私の所属する研究室は、実験心理学の研究室です。「我々は実験がアイデンティティ」というのがいつもボスとしゃべっていることで、今年は実験ができず、自分のアイデンティティが揺らぐ一年でした。</p>
+<p>実験をしないと研究が進まないので、何かしらやろうと思って、今年の春はずっとオンライン実験の作り方を勉強していました。lab.jsやjsPsychというものがあるのを知って、小林先生のこのチュートリアルやlab.js公式ドキュメント、jsPsychの公式チュートリアルを見ていました。両方とも結構使いやすいツールなので（違いについてはこの記事を参照）結構すぐに実験が作れるようになりました。</p>
+<p>結構lab.jsについては詳しくなった自信があります。JavaScriptも結構できるようになりました。<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>でも結局のところ、私自身はこれまで一度もオンライン実験をしていないんですよね。自分がやりたい実験をオンラインでやるのは難しかったからです。</p>
+<p>ただ勉強したことが何の役にも立たなかったわけではありません。オンライン実験をすることになった卒論生が多かったからです。私が所属する学科では学部3年のときにPsychoPy Builderの使い方を勉強するので、卒論生ならPsychoPyは一通り使えるのですが、lab.jsを使うことは想定していなかったはずで、とても大変だったと思います。lab.jsやjsPsychを使える人が研究室には私以外にいなかったので、オンライン実験を使った卒論については私がほぼすべての面倒を見ました。卒論生のがんばりには本当に頭が下がる思いです。</p>
+<p>特に多かった質問2つと、それについての対処法をご紹介しようと思います。</p>
+<div id="q1.-オンライン実験はどうやって公開したらいいですか" class="section level1">
+<h1>Q1. オンライン実験はどうやって公開したらいいですか？</h1>
+<p>オンライン実験の作成じたいはlab.js, jsPsychなどでいいのですが、作ったものをどこで公開するのか？は結構難しい問題です。当初はQualtricsにlab.jsやjsPsychで作った実験を貼り込む方法 (jsPsychの実験を貼る方法については<a href="https://honamik-s.github.io/log/post/200512_jspsych-on-qualt/">こちら</a>; 柏原くんの<a href="https://kscscr.com/archives/jspsych-qualtrics-r.html">記事</a>も参照してください。こっちのほうが自分のより分かりやすい気が…) を推奨していたのですが、途中から推奨しなくなりました。なぜなら、Qualtricsから出てくるデータがめちゃめちゃuntidyだからです。Rに強い人なら気にならないかもしれませんが、そうでない人・Excelでなんとかしたい人にはつらいです。</p>
+<p>そこで、<a href="https://open-lab.online/">Open Lab</a>を使い始めました。Open Labのいいところは、lab.jsとの連携が簡単なところです。こちらの<a href="https://labjs.readthedocs.io/en/latest/learn/deploy/3d-openlab.html">公式ドキュメントページ</a>にも、連携の方法が載っています。細かいやり方はいつか時間のある時にまとめますが、基本的にはlab.jsのビルダーで保存ボタンの隣の矢印 (赤丸で示す) をクリックして、「Upload to Open Lab」を選ぶだけです。</p>
+<center>
+<p><img src="docs/openlab_labjs.png" width="500" /></p>
+</center>
+<p>300人までなら無料で実験できるので、卒論の実験には十分でしょう。ただ無料版だと2つ以上の実験を同時に実施することができないので、実験群を3つ設けて同じ数だけ参加者を取る、みたいなのは少し難しかったです。</p>
+</div>
+<div id="q2.-qualtricsにlab.jsの実験を貼り込んで実施したところlab.jsからのデータがjson形式で出力されてexcelでは内容がよくわかりません" class="section level1">
+<h1>Q2. Qualtricsにlab.jsの実験を貼り込んで実施したところ、lab.jsからのデータがJSON形式で出力されて、Excelでは内容がよくわかりません。</h1>
+<p>上で書いた「Qualtricsから出てくるデータがめちゃめちゃuntidy」ってやつですね。lab.jsの公式ドキュメントで<a href="https://labjs.readthedocs.io/en/latest/learn/deploy/3-third-party.html#tutorial-deploy-third-party-postprocessing">Qualtricsのデータ整理方法</a>が紹介されていて、基本的にはこのRコードで解読できます。ただ、このRコードが結構難解なんですよね。一応簡単に解説します。</p>
+<p>まず必要パッケージ (<code>tidyverse</code>, <code>readr</code>) を読み込みます。</p>
+<p>Qualtricsからはcsv, tsv, xlsxなど様々な形式でデータを書き出すことが可能ですが、できればcsv形式で出力してください。tsvやxlsxだとRで扱うときにエラーを吐くことがあります。</p>
+<pre class="r"><code>library(tidyverse)
+library(readr)
+
+data_raw &lt;- read_csv(&#39;data.csv&#39;)</code></pre>
+<p>次に、lab.jsのデータが入っている列の名前を<code>labjs_column</code>というオブジェクトに入れます。</p>
+<pre class="r"><code>labjs_column &lt;- &#39;labjs-data&#39;</code></pre>
+<p>次が、その列に入っているJSON形式のデータを、RやExcelで扱いやすい形のデータに変形させるためのコードです。難解ですが…。</p>
+<pre class="r"><code>data_raw %&gt;%
+  mutate(
+    !!labjs_column := recode(.[[labjs_column]], .missing=&#39;[{}]&#39;)
+  ) %&gt;%
+  group_by_all() %&gt;%
+  do(
+    fromJSON(.[[labjs_column]], flatten=T)
+  ) %&gt;%
+  ungroup() %&gt;%
+  select(-matches(labjs_column)) -&gt; data</code></pre>
+<p><code>tidyverse</code>を使っている人だったら<code>mutate()</code>などは見覚えがあると思いますが、<code>recode()</code>とか、あまり使わないですよね。<code>switch()</code>のベクトル版で、データを置き換えることができます。</p>
+<pre class="r"><code>vector &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
+dplyr::recode(vector, a = &quot;Apple&quot;)</code></pre>
+<pre><code>## [1] &quot;Apple&quot; &quot;b&quot;     &quot;c&quot;</code></pre>
+<p><code>group_by_all()</code>は<code>group_by()</code>の兄弟みたいな関数です。</p>
+<pre class="r"><code>dplyr::group_by_all(mtcars) %&gt;%
+  head(10)</code></pre>
+<pre><code>## # A tibble: 10 x 11
+## # Groups:   mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb [10]
+##      mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1  21       6  160    110  3.9   2.62  16.5     0     1     4     4
+##  2  21       6  160    110  3.9   2.88  17.0     0     1     4     4
+##  3  22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
+##  4  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
+##  5  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
+##  6  18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
+##  7  14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
+##  8  24.4     4  147.    62  3.69  3.19  20       1     0     4     2
+##  9  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
+## 10  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4</code></pre>
+<p>一応これでいけると思いますが、もし何かトラブったら教えてください。研究室内でもしょっちゅうトラブったのですが、トラブルシューティングも行き当たりばったりでやっていたので、あまりきちんと記録していなかったのです。</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>私はPythonとRの人なので、JavaScript書かなきゃいけないのか…と結構渋りました。が、やっておいてよかったとは思います。<a href="#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+</div>
+
+    
+    
+    
+
+    
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

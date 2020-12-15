@@ -6,10 +6,19 @@
     <description>Recent content in Categories on Honami Kobayashi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 01 Dec 2020 10:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 15 Dec 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Experiment</title>
+      <link>/categories/experiment/</link>
+      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/experiment/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Personal</title>
