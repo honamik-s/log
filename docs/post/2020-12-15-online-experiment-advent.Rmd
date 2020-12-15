@@ -12,11 +12,13 @@ knitr::opts_chunk$set(echo = TRUE,
 library(tidyverse)
 ```
 
+[オンライン実験・調査に関するアドベントカレンダー](https://adventar.org/calendars/6005)15日目の記事です。
+
 今年はいろいろありましたね。
 
 私の所属する研究室は、実験心理学の研究室です。「我々は実験がアイデンティティ」というのがいつもボスとしゃべっていることで、今年は実験ができず、自分のアイデンティティが揺らぐ一年でした。
 
-実験をしないと研究が進まないので、何かしらやろうと思って、今年の春はずっとオンライン実験の作り方を勉強していました。lab.jsやjsPsychというものがあるのを知って、小林先生のこのチュートリアルやlab.js公式ドキュメント、jsPsychの公式チュートリアルを見ていました。両方とも結構使いやすいツールなので（違いについてはこの記事を参照）結構すぐに実験が作れるようになりました。
+実験をしないと研究が進まないので、何かしらやろうと思って、今年の春はずっとオンライン実験の作り方を勉強していました。lab.jsやjsPsychというものがあるのを知って、小林先生の[このチュートリアル](https://labjs.yucis.net/8496c3c67b384168b9e69f165ee06e16)や[lab.js公式ドキュメント](https://labjs.readthedocs.io/en/latest/)、[jsPsychの公式チュートリアル](https://www.jspsych.org/tutorials/hello-world/)を見ていました。両方とも結構使いやすいツールなので（違いについては[この記事](https://mklab.info/2020/12/11/jspsych-vs-lab-js/)を参照）結構すぐに実験が作れるようになりました。
 
 結構lab.jsについては詳しくなった自信があります。JavaScriptも結構できるようになりました。[^1]
 
@@ -37,7 +39,7 @@ library(tidyverse)
 
 <center>
 
-![](docs/openlab_labjs.png){width=500px}
+![](openlab_labjs.png){width=500px}
 
 </center>
 

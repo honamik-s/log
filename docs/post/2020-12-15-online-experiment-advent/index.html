@@ -140,9 +140,10 @@
 <script src="../../rmarkdown-libs/anchor-sections/anchor-sections.js"></script>
 
 
+<p><a href="https://adventar.org/calendars/6005">オンライン実験・調査に関するアドベントカレンダー</a>15日目の記事です。</p>
 <p>今年はいろいろありましたね。</p>
 <p>私の所属する研究室は、実験心理学の研究室です。「我々は実験がアイデンティティ」というのがいつもボスとしゃべっていることで、今年は実験ができず、自分のアイデンティティが揺らぐ一年でした。</p>
-<p>実験をしないと研究が進まないので、何かしらやろうと思って、今年の春はずっとオンライン実験の作り方を勉強していました。lab.jsやjsPsychというものがあるのを知って、小林先生のこのチュートリアルやlab.js公式ドキュメント、jsPsychの公式チュートリアルを見ていました。両方とも結構使いやすいツールなので（違いについてはこの記事を参照）結構すぐに実験が作れるようになりました。</p>
+<p>実験をしないと研究が進まないので、何かしらやろうと思って、今年の春はずっとオンライン実験の作り方を勉強していました。lab.jsやjsPsychというものがあるのを知って、小林先生の<a href="https://labjs.yucis.net/8496c3c67b384168b9e69f165ee06e16">このチュートリアル</a>や<a href="https://labjs.readthedocs.io/en/latest/">lab.js公式ドキュメント</a>、<a href="https://www.jspsych.org/tutorials/hello-world/">jsPsychの公式チュートリアル</a>を見ていました。両方とも結構使いやすいツールなので（違いについては<a href="https://mklab.info/2020/12/11/jspsych-vs-lab-js/">この記事</a>を参照）結構すぐに実験が作れるようになりました。</p>
 <p>結構lab.jsについては詳しくなった自信があります。JavaScriptも結構できるようになりました。<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <p>でも結局のところ、私自身はこれまで一度もオンライン実験をしていないんですよね。自分がやりたい実験をオンラインでやるのは難しかったからです。</p>
 <p>ただ勉強したことが何の役にも立たなかったわけではありません。オンライン実験をすることになった卒論生が多かったからです。私が所属する学科では学部3年のときにPsychoPy Builderの使い方を勉強するので、卒論生ならPsychoPyは一通り使えるのですが、lab.jsを使うことは想定していなかったはずで、とても大変だったと思います。lab.jsやjsPsychを使える人が研究室には私以外にいなかったので、オンライン実験を使った卒論については私がほぼすべての面倒を見ました。卒論生のがんばりには本当に頭が下がる思いです。</p>
@@ -152,7 +153,7 @@
 <p>オンライン実験の作成じたいはlab.js, jsPsychなどでいいのですが、作ったものをどこで公開するのか？は結構難しい問題です。当初はQualtricsにlab.jsやjsPsychで作った実験を貼り込む方法 (jsPsychの実験を貼る方法については<a href="https://honamik-s.github.io/log/post/200512_jspsych-on-qualt/">こちら</a>; 柏原くんの<a href="https://kscscr.com/archives/jspsych-qualtrics-r.html">記事</a>も参照してください。こっちのほうが自分のより分かりやすい気が…) を推奨していたのですが、途中から推奨しなくなりました。なぜなら、Qualtricsから出てくるデータがめちゃめちゃuntidyだからです。Rに強い人なら気にならないかもしれませんが、そうでない人・Excelでなんとかしたい人にはつらいです。</p>
 <p>そこで、<a href="https://open-lab.online/">Open Lab</a>を使い始めました。Open Labのいいところは、lab.jsとの連携が簡単なところです。こちらの<a href="https://labjs.readthedocs.io/en/latest/learn/deploy/3d-openlab.html">公式ドキュメントページ</a>にも、連携の方法が載っています。細かいやり方はいつか時間のある時にまとめますが、基本的にはlab.jsのビルダーで保存ボタンの隣の矢印 (赤丸で示す) をクリックして、「Upload to Open Lab」を選ぶだけです。</p>
 <center>
-<p><img src="docs/openlab_labjs.png" width="500" /></p>
+<p><img src="openlab_labjs.png" width="500" /></p>
 </center>
 <p>300人までなら無料で実験できるので、卒論の実験には十分でしょう。ただ無料版だと2つ以上の実験を同時に実施することができないので、実験群を3つ設けて同じ数だけ参加者を取る、みたいなのは少し難しかったです。</p>
 </div>
