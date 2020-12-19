@@ -4,16 +4,46 @@
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2020-12-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/experiment/</loc>
-    <lastmod>2020-12-15T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/modeling/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/stan/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2020-12-19-stan-advent/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/stats/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/experiment/</loc>
     <lastmod>2020-12-15T00:00:00+00:00</lastmod>
   </url>
   
@@ -28,17 +58,7 @@
   </url>
   
   <url>
-    <loc>/post/</loc>
-    <lastmod>2020-12-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/r/</loc>
-    <lastmod>2020-12-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
     <lastmod>2020-12-15T00:00:00+00:00</lastmod>
   </url>
   
@@ -93,22 +113,12 @@
   </url>
   
   <url>
-    <loc>/tags/stats/</loc>
-    <lastmod>2020-02-25T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/post/2020-02-25-entropy/</loc>
     <lastmod>2020-02-25T21:13:14-05:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/stan/</loc>
-    <lastmod>2020-02-23T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/stan/</loc>
     <lastmod>2020-02-23T21:13:14-05:00</lastmod>
   </url>
   
