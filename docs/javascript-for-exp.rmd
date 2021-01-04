@@ -1,5 +1,0 @@
----
-title: "Javascript for Exp"
-description: ""
-draft: true
----

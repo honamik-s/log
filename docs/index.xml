@@ -12,6 +12,42 @@
     
     
     <item>
+      <title>Project 1</title>
+      <link>/project/project1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/project/project1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Project 2</title>
+      <link>/project/project2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/project/project2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Project 3</title>
+      <link>/project/project3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/project/project3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Project 4</title>
+      <link>/project/project4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/project/project4/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Stanを使ってモデリングするために：数学編</title>
       <link>/post/2020-12-19-stan-advent/</link>
       <pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate>
@@ -36,15 +72,6 @@
       
       <guid>/post/2020-12-01-bayes-advent/</guid>
       <description>こんにちは、小林です。 認知心理学・実験心理学が専門で、主に視覚的注意の研究をしています。本好きです。好きなジャンルはSFとヴィクトリア朝文学</description>
-    </item>
-    
-    <item>
-      <title>lab.jsの実験をQualtricsに貼り込む</title>
-      <link>/200521_labjs_on_qualt/</link>
-      <pubDate>Thu, 21 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/200521_labjs_on_qualt/</guid>
-      <description>実験をアップロード まずlab.jsで作った実験を、手元のPCにダウンロードします。</description>
     </item>
     
     <item>
@@ -90,24 +117,6 @@
       
       <guid>/about/</guid>
       <description>主な研究テーマ 時空間的統計情報の学習・利用メカニズムの解明 私たちの周囲には多くの情報があります。その中から必要な情報を探して選び出すことは、</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>/about_1/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/about_1/</guid>
-      <description>R, stan, モデリングなどに関する情報を（主に自分用に）まとめています。</description>
-    </item>
-    
-    <item>
-      <title>Javascript for Exp</title>
-      <link>/javascript-for-exp/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/javascript-for-exp/</guid>
-      <description></description>
     </item>
     
     <item>

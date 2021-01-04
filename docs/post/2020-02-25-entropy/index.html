@@ -34,10 +34,10 @@
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
 
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" crossorigin="anonymous">
 
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
  
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
@@ -109,9 +109,11 @@
                     
                         <ul class="nav navbar-nav navbar-right">
                             
-                                <li class="navbar-icon"><a href="https://clemhk.wordpress.com"><i class="fa fa-wordpress"></i></a></li>
+                                <li class="navbar-icon"><a href="https://clemhk.wordpress.com"><i class="wordpress"></i></a></li>
                             
-                                <li class="navbar-icon"><a href="https://twitter.com/hnm_clem/"><i class="fa fa-twitter"></i></a></li>
+                                <li class="navbar-icon"><a href="https://twitter.com/hnm_clem/"><i class="twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://researchmap.jp/honamik"><i class="newspaper"></i></a></li>
                             
                         </ul>
                     
@@ -132,6 +134,8 @@
     </div>
 
     <div align="start" class="content">
+<link href="../../rmarkdown-libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="../../rmarkdown-libs/anchor-sections/anchor-sections.js"></script>
 
 
 <div id="エントロピーにたどり着けない" class="section level1">
@@ -171,7 +175,7 @@ ggplot2::ggplot(data.frame(x = c(0, 1)), aes(x)) +
   theme(panel.grid = element_blank()) +
   labs(y = &quot;エントロピー&quot;, 
        x = &quot;片方の事象が起こる確率p&quot;)</code></pre>
-<pre><code>## Warning: Removed 2 rows containing missing values (geom_path).</code></pre>
+<pre><code>## Warning: Removed 2 row(s) containing missing values (geom_path).</code></pre>
 <p><img src="../../post/2020-02-25-entropy_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <p>片方の事象が起こる確率<span class="math inline">\(p\)</span>が0.5、つまり2つのできごとが起こる可能性が五分五分のときにエントロピーが最大になっています。さっきの足し算とかけ算はこのためです。試しに<span class="math inline">\(p\)</span>や<span class="math inline">\(q\)</span>をかけるのをやめてみると、こんな感じです。</p>
 <pre class="r"><code>fun_ent_2 &lt;- function(p) {
@@ -199,7 +203,7 @@ ggplot2::ggplot(data.frame(x = c(0, 1)), aes(x)) +
   theme(panel.grid = element_blank()) +
   labs(y = &quot;エントロピー&quot;, 
        x = &quot;片方の事象が起こる確率p&quot;)</code></pre>
-<pre><code>## Warning: Removed 2 rows containing missing values (geom_path).</code></pre>
+<pre><code>## Warning: Removed 2 row(s) containing missing values (geom_path).</code></pre>
 <p><img src="../../post/2020-02-25-entropy_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>ここまで来たら「社会科学のためのベイズ統計モデリング」でもエントロピーにたどり着けそうですね。</p>
 </div>

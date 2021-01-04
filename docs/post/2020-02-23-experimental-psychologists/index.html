@@ -34,10 +34,10 @@
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
 
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" crossorigin="anonymous">
 
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
  
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
@@ -109,9 +109,11 @@
                     
                         <ul class="nav navbar-nav navbar-right">
                             
-                                <li class="navbar-icon"><a href="https://clemhk.wordpress.com"><i class="fa fa-wordpress"></i></a></li>
+                                <li class="navbar-icon"><a href="https://clemhk.wordpress.com"><i class="wordpress"></i></a></li>
                             
-                                <li class="navbar-icon"><a href="https://twitter.com/hnm_clem/"><i class="fa fa-twitter"></i></a></li>
+                                <li class="navbar-icon"><a href="https://twitter.com/hnm_clem/"><i class="twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://researchmap.jp/honamik"><i class="newspaper"></i></a></li>
                             
                         </ul>
                     
@@ -134,6 +136,8 @@
     </div>
 
     <div align="start" class="content">
+<link href="../../rmarkdown-libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="../../rmarkdown-libs/anchor-sections/anchor-sections.js"></script>
 <script src="../../rmarkdown-libs/kePrint/kePrint.js"></script>
 
 
@@ -14799,8 +14803,8 @@ Family Specific Parameters:
       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
 sigma     0.81      0.01     0.80     0.82 1.00     3407     2846
 
-Samples were drawn using sampling(NUTS). For each parameter, Eff.Sample 
-is a crude measure of effective sample size, and Rhat is the potential 
+Samples were drawn using sampling(NUTS). For each parameter, Bulk_ESS
+and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).</code></pre>
 <p>そこで<code>plot()</code>を使って可視化します。ちなみに<code>bayesplot::color_scheme_set()</code>でプロットの色を変えられます。緑系の色が好きなので、<code>teal</code>を設定してみました。鴨の羽色、と呼ぶそうです。左側に事後分布、右側にトレースプロットが表示されます。</p>
 <pre class="r"><code>bayesplot::color_scheme_set(&quot;teal&quot;)
@@ -14891,8 +14895,8 @@ Family Specific Parameters:
       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
 sigma     0.77      0.00     0.76     0.77 1.00     3380     2388
 
-Samples were drawn using sampling(NUTS). For each parameter, Eff.Sample 
-is a crude measure of effective sample size, and Rhat is the potential 
+Samples were drawn using sampling(NUTS). For each parameter, Bulk_ESS
+and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).</code></pre>
 <p><span class="math display">\[\gamma=\beta_S + \beta_I search(1)=0.22-0.22=0\]</span></p>
 <p><span class="math display">\[\gamma=\beta_S + \beta_I search(0)=0.22\]</span></p>
@@ -15126,8 +15130,8 @@ Family Specific Parameters:
       Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
 sigma     0.72      0.01     0.71     0.73 1.00      266      749
 
-Samples were drawn using sampling(NUTS). For each parameter, Eff.Sample 
-is a crude measure of effective sample size, and Rhat is the potential 
+Samples were drawn using sampling(NUTS). For each parameter, Bulk_ESS
+and Tail_ESS are effective sample size measures, and Rhat is the potential
 scale reduction factor on split chains (at convergence, Rhat = 1).</code></pre>
 <p>個人ごとの変動をプロットすることもできます。</p>
 <p><img src="../../post/2020-02-23-experimental-psychologists_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
