@@ -1,0 +1,14 @@
+#table-of-contents > h2 {
+    background-color: #2E8B57;
+
+}
+
+#table-of-contents > h2 > a{
+    font-size: large;
+    color: #FFFFFF;
+
+}
+
+h1,h2,h3,h4{
+    color:#000000;
+}
