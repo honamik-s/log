@@ -22,7 +22,7 @@
 </style>
 
 
-<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../css/main.css">
 
 
 
@@ -96,13 +96,13 @@
                     
                         <ul class="nav navbar-nav">
                             
-                                <li><a href="../../">Home</a></li>
+                                <li><a href="../">Home</a></li>
                             
-                                <li><a href="../../about/">業績・発表予定</a></li>
+                                <li><a href="../about/">業績・発表予定</a></li>
                             
-                                <li><a href="../../resource/">資料</a></li>
+                                <li><a href="../resource/">資料</a></li>
                             
-                                <li><a href="../../post/">ブログ</a></li>
+                                <li><a href="../post/">ブログ</a></li>
                             
                         </ul>
                     
@@ -126,20 +126,20 @@
 
     <div>
         <h2>Stanで階層diffusionモデル</h2>
-        <h5>December 16, 2019</h5>
+        <h5></h5>
         
-<a href="../../tags/stats"><kbd class="item-tag">stats</kbd></a>
+<a href="../tags/stats"><kbd class="item-tag">stats</kbd></a>
 
-<a href="../../tags/diffusion"><kbd class="item-tag">diffusion</kbd></a>
+<a href="../tags/diffusion"><kbd class="item-tag">diffusion</kbd></a>
 
-<a href="../../tags/stan"><kbd class="item-tag">stan</kbd></a>
+<a href="../tags/stan"><kbd class="item-tag">stan</kbd></a>
 
 
     </div>
 
     <div align="start" class="content">
-<link href="../../rmarkdown-libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
-<script src="../../rmarkdown-libs/anchor-sections/anchor-sections.js"></script>
+<link href="../rmarkdown-libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="../rmarkdown-libs/anchor-sections/anchor-sections.js"></script>
 
 
 <div id="はじめに" class="section level2">
@@ -197,7 +197,7 @@
 <h2>データを読み込む</h2>
 <p>ここで実際のデータを使って分析をしてみましょう。今回は空間手がかり課題 (ポズナー課題) のデータを使ってみます。空間手がかり課題をPsychoPyのbuilderで作るチュートリアルを私のボスが書いているので、<a href="http://ogwlab.org/?page_id=815">こちら</a>もご参照ください。わかりやすくておすすめです。</p>
 <p>今回使った課題はこんな流れです。</p>
-<p><img src="posner.png" /></p>
+<p><img src="res/posner.png" /></p>
 <p>参加者の課題は、左右の箱のどちらかに呈示される文字 (標的) がEかFかを、キー押しで判断することです。標的呈示前に、「手がかり」として左右どちらかの箱の枠が短い時間だけ太く表示されます。手がかり位置と標的位置が同じ試行を「有効手がかり条件」、異なる試行を「無効手がかり条件」と呼びます。</p>
 <p>手がかりと同じ場所に標的が出てくると、手がかりによって注意がその場所に向いている状態なので、すばやく反応できます。一方で手がかりと反対側に標的が出てきたときには、手がかり位置にいったん注意が向いたあとで標的位置まで移動しなければいけないので、少し時間がかかります。この「注意が向いている状態」と「向いていない状態」との差を比較することで、目に見えない“注意”の働きを取り出しています (少なくとも、そのように考えて実験をします)。</p>
 <pre class="r"><code>some_data &lt;- read.table(file = &quot;exp.txt&quot;, header = T)
@@ -210,7 +210,7 @@ head(some_data)</code></pre>
 ## 5  558.138       1   f      F     1           0
 ## 6  650.609       1   f      F     1           0</code></pre>
 <p>誤答試行 (左) ・正答試行 (右) の反応時間はそれぞれこんな感じです。</p>
-<p><img src="../../post/2019-12-16-stan-diffusion_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="../2019-12-16-stan-diffusion_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
 <div id="stanコードを書く" class="section level2">
 <h2>Stanコードを書く</h2>
@@ -318,7 +318,7 @@ model {
 ##   ..$ C          : num 2
 ##  $ genInitList:function ()  
 ##   ..- attr(*, &quot;srcref&quot;)= &#39;srcref&#39; int [1:8] 105 18 113 3 18 3 105 113
-##   .. ..- attr(*, &quot;srcfile&quot;)=Classes &#39;srcfilecopy&#39;, &#39;srcfile&#39; &lt;environment: 0x000000001c2ee018&gt;</code></pre>
+##   .. ..- attr(*, &quot;srcfile&quot;)=Classes &#39;srcfilecopy&#39;, &#39;srcfile&#39; &lt;environment: 0x000000001cf08550&gt;</code></pre>
 <p>こういう形に整形できたら、データの準備は完了です。</p>
 </div>
 <div id="mcmc" class="section level2">
@@ -390,7 +390,7 @@ fit &lt;- rstan::sampling(mod,
 ## convergence, Rhat=1).</code></pre>
 <p>トレースプロットもいい感じです。収束感が感じられるので<code>inc_warmup = T</code>派です (そんな派閥はない)。</p>
 <pre class="r"><code>rstan::traceplot(fit, pars = c(&quot;alpha&quot;, &quot;delta&quot;, &quot;tau&quot;), inc_warmup = T)</code></pre>
-<p><img src="../../post/2019-12-16-stan-diffusion_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="../2019-12-16-stan-diffusion_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p><span class="math inline">\(\delta\)</span>の事後分布をプロットしてみます。最近<code>tidybayes</code>にはまっています。手がかり条件は1: 無効、2: 有効、となっています。今回は3人分のデータを使ったので、参加者ごとに<code>facet</code>に分けてプロットしてみました。</p>
 <pre class="r"><code>library(tidybayes)
 fit %&gt;% 
@@ -402,7 +402,7 @@ fit %&gt;%
   ylab(&quot;手がかり条件&quot;) +
   xlab(expression(delta)) +
   facet_wrap(~subj)</code></pre>
-<p><img src="../../post/2019-12-16-stan-diffusion_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="../2019-12-16-stan-diffusion_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p>このように、反応時間と正答率の同時確率分布を用いて、パラメータを推定することができました。空間手がかり課題で注意が向いている・いない条件の違いがドリフト率に反映されていそうなことがわかります（といいたいところですが、2番と3番の人ではあんまり違いがないですね）。今回は正答率が極端に高い課題を使ったのであんまり推定結果がおもしろくないのですが、反応時間と正答率のトレードオフが起こるような課題を使うともっと楽しいと思います。</p>
 </div>
 <div id="まとめ" class="section level2">
@@ -410,71 +410,6 @@ fit %&gt;%
 <p>ベイズモデリングをする動機づけはいろいろあると思いますが、私にとっては実験で得られたデータからありったけの情報を搾り取ることができる (場合がある) というのが一番の動機です。diffusionモデルでは各試行の正答率と反応時間を同時に考慮することができて、そういう点では自分がやりたいことに近いと感じます。奥深いモデルですが、比較的容易に実装できるところも魅力です。皆さんもぜひdiffusionで(*´Д`)ﾊｧﾊｧしましょう。</p>
 </div>
 </div>
-
-    
-    
-    
-        <h4 class="page-header">Related</h4>
-         <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="../../post/2020-12-19-stan-advent/">Stanを使ってモデリングするために：数学編</a></h4>
-    <h5>December 20, 2020</h5>
-    
-<a href="../../tags/stats"><kbd class="item-tag">stats</kbd></a>
-
-<a href="../../tags/stan"><kbd class="item-tag">Stan</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="../../post/2020-02-25-entropy/">雑なエントロピー入門</a></h4>
-    <h5>February 25, 2020</h5>
-    
-<a href="../../tags/stats"><kbd class="item-tag">stats</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="../../post/2020-02-23-experimental-psychologists/">実験心理学者のための統計モデリング入門</a></h4>
-    <h5>February 23, 2020</h5>
-    
-<a href="../../tags/stats"><kbd class="item-tag">stats</kbd></a>
-
-<a href="../../tags/stan"><kbd class="item-tag">stan</kbd></a>
-
-
-
-</div>
- 
-    
-
-    
-    
 
 </main>
 

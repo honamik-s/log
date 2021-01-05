@@ -16,4 +16,5 @@ lab.jsやjsPsychを使ってオンライン実験を作り、実施するうえ�
 
 Rでデータハンドリング・`ggplot2`でグラフを描くときに役立ちそうなことを紹介します。
 
+- [Rで統計を勉強する（作成中）](https://honamik-s.github.io/statistics-with-r/)
 - JSON形式のファイルを読み込む（作成中）

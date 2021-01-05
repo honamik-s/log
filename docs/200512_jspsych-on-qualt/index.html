@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="ja-jp">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>jsPsychの実験をQualtricsに貼り込む</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #009bb2;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="../css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.63.2" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">jsPsychの実験をQualtricsに貼り込む</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="../">Home</a></li>
+                            
+                                <li><a href="../about/">業績・発表予定</a></li>
+                            
+                                <li><a href="../resource/">資料</a></li>
+                            
+                                <li><a href="../post/">ブログ</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://clemhk.wordpress.com"><i class="wordpress"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/hnm_clem/"><i class="twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://researchmap.jp/honamik"><i class="newspaper"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>jsPsychの実験をQualtricsに貼り込む</h2>
+        <h5></h5>
+        
+<a href="../tags/exp"><kbd class="item-tag">exp</kbd></a>
+
+<a href="../tags/js"><kbd class="item-tag">JS</kbd></a>
+
+<a href="../tags/qualtrics"><kbd class="item-tag">Qualtrics</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content">
+<link href="../rmarkdown-libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="../rmarkdown-libs/anchor-sections/anchor-sections.js"></script>
+
+
+<p>QualtricsでjsPsychの実験を埋め込んで実行するためのコードなどを紹介します。<a href="https://kywch.github.io/jsPsych-in-Qualtrics/">こちらのページ</a>をおおいに参考にしました。</p>
+<div id="githubのレポジトリを作る" class="section level1">
+<h1>GitHubのレポジトリを作る</h1>
+<p>今回はGitHubのレポジトリに実験ファイルを置いて利用するので、GitHubにレポジトリを作る必要があります。<a href="https://help.github.com/ja/github/getting-started-with-github/create-a-repo">こちら</a>を見ると、作り方がわかると思います。</p>
+<p>GitHubを使わない方法もあるはずですが、私が把握していないので今回は扱いません。</p>
+<div class="figure">
+<img src="res/200512_github.png" alt="GitHubのレポジトリ作成" width="500" />
+<p class="caption">GitHubのレポジトリ作成</p>
+</div>
+</div>
+<div id="jspsychの実験をgithubに置く" class="section level1">
+<h1>jsPsychの実験をGitHubに置く</h1>
+<p><img src="res/200512_folder.png" /></p>
+<p>jsPsychフォルダ、実験で使う画像のフォルダ、実験ファイル (html) を準備します。今回使っている実験は、jsPsychの公式サイトで公開されている反応時間課題チュートリアルのものです。<code>experiment.html</code>の中身はこんな感じ。</p>
+<details>
+<summary>サンプルコード</summary>
+<div>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;My experiment&lt;/title&gt;
+        &lt;script src=&quot;jspsych-6.1.0/jspsych.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;jspsych-6.1.0/plugins/jspsych-html-keyboard-response.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;jspsych-6.1.0/plugins/jspsych-image-keyboard-response.js&quot;&gt;&lt;/script&gt;
+        &lt;link href=&quot;jspsych-6.1.0/css/jspsych.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;&lt;/link&gt;
+    &lt;/head&gt;
+    &lt;body&gt;&lt;/body&gt;
+    &lt;script&gt;
+
+    /* create timeline */
+    var timeline = [];
+
+    /* define welcome message trial */
+    var welcome = {
+      type: &quot;html-keyboard-response&quot;,
+      stimulus: &quot;スペースキーを押すと実験を開始できます。&quot;
+    };
+    timeline.push(welcome);
+
+    /* define instructions trial */
+    var instructions = {
+      type: &quot;html-keyboard-response&quot;,
+      stimulus: &quot;&lt;p&gt;この実験では画面の中央に円が表示されます。 &lt;/p&gt;&quot; +
+          &quot;&lt;p&gt;もし円が &lt;strong&gt;青なら&lt;/strong&gt;、Fキーを押してください。&lt;/p&gt;&quot; +
+          &quot;&lt;p&gt;もし円が &lt;strong&gt;オレンジなら&lt;/strong&gt;、Jキーを押してください。&lt;/p&gt;&quot; +
+          &quot;&lt;div style=&#39;width: 700px;&#39;&gt;&quot;+
+          &quot;&lt;div style=&#39;float: left;&#39;&gt;&lt;img src=&#39;img/blue.png&#39;&gt;&lt;/img&gt;&quot; +
+          &quot;&lt;p class=&#39;small&#39;&gt;&lt;strong&gt;Fキーを押してください&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;&quot; +
+          &quot;&lt;div class=&#39;float: right;&#39;&gt;&lt;img src=&#39;img/orange.png&#39;&gt;&lt;/img&gt;&quot; +
+          &quot;&lt;p class=&#39;small&#39;&gt;&lt;strong&gt;Jキーを押してください&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;&quot; +
+          &quot;&lt;/div&gt;&quot;+
+          &quot;&lt;p&gt;スペースキーを押すと実験を開始できます。&lt;/p&gt;&quot;,
+      post_trial_gap: 2000
+    };
+    timeline.push(instructions);
+
+    /* test trials */
+    var test_stimuli = [
+      { stimulus: &quot;img/blue.png&quot;, data: {test_part: &#39;test&#39;, correct_response: &#39;f&#39;}},
+      { stimulus: &quot;img/orange.png&quot;, data: {test_part: &#39;test&#39;, correct_response: &#39;j&#39;}}
+    ];
+
+    var fixation = {
+      type: &#39;html-keyboard-response&#39;,
+      stimulus: &#39;&lt;div style=&quot;font-size:60px;&quot;&gt;+&lt;/div&gt;&#39;,
+      choices: jsPsych.NO_KEYS,
+      trial_duration: function(){
+        return jsPsych.randomization.sampleWithoutReplacement([250, 500, 750, 1000, 1250, 1500, 1750, 2000], 1)[0];
+        },
+      data: {test_part: &#39;fixation&#39;}
+    }
+
+    var test = {
+      type: &quot;image-keyboard-response&quot;,
+      stimulus: jsPsych.timelineVariable(&#39;stimulus&#39;),
+      choices: [&#39;f&#39;, &#39;j&#39;],
+      data: jsPsych.timelineVariable(&#39;data&#39;),
+      on_finish: function(data){
+        data.correct = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode(data.correct_response);
+        }
+    }
+
+    var test_procedure = {
+      timeline: [fixation, test],
+      timeline_variables: test_stimuli,
+      randomize_order: true,
+      repetitions: 5
+    }
+
+    timeline.push(test_procedure);
+
+
+    /* start the experiment */
+    jsPsych.init({
+      timeline: timeline,
+      on_finish: function() {
+        jsPsych.data.displayData();
+        }
+    });
+
+
+    &lt;/script&gt;
+&lt;/html&gt;
+
+</code></pre>
+</div>
+</details>
+<p><br><br></p>
+<p>これらを作成したGitHubレポジトリにアップロードします。「Commit change」を押し忘れないようにしてください。</p>
+<p>アップロードが終わったら、レポジトリの設定画面に移動します。「GitHub Pages」というセクションを探し、「Source」をMaster branchとします。</p>
+<p><img src="res/200512_github_pages.png" width="500" /></p>
+<p><code>https://&lt;GitHubのユーザー名&gt;.github.io/&lt;レポジトリ名&gt;/</code>に、webページが公開されるので、確認してください。</p>
+</div>
+<div id="実験ファイルを編集" class="section level1">
+<h1>実験ファイルを編集</h1>
+<p>ここからがそこそこ面倒です。さっき実験ファイルをレポジトリに上げましたが、このファイルを編集してQualtricsに貼れるようにしていきます。</p>
+<p>手元のPCで使っているお好みのエディターで、<code>experiment.html</code>の中身をコピーして<code>experiment_updated.html</code>というファイルを作ってください。そしてそれとは別に、新たに<code>main.js</code>というファイルを作ってください。その中に、<code>experiment_updated.html</code>から以下の部分 (<code>/* create timeline */</code>から<code>/* start the experiment */</code>の手前まで) を<strong>切り取り</strong>、貼り付けてください。コピーではなく切り取りです。</p>
+<pre class="js"><code>/* create timeline */
+var timeline = [];
+
+/* define welcome message trial */
+var welcome = {
+  type: &quot;html-keyboard-response&quot;,
+  stimulus: &quot;スペースキーを押すと実験を開始できます。&quot;
+};
+timeline.push(welcome);
+
+/* define instructions trial */
+var instructions = {
+  type: &quot;html-keyboard-response&quot;,
+  stimulus: &quot;&lt;p&gt;この実験では画面の中央に円が表示されます。 &lt;/p&gt;&quot; +
+      &quot;&lt;p&gt;もし円が &lt;strong&gt;青なら&lt;/strong&gt;、Fキーを押してください。&lt;/p&gt;&quot; +
+      &quot;&lt;p&gt;もし円が &lt;strong&gt;オレンジなら&lt;/strong&gt;、Jキーを押してください。&lt;/p&gt;&quot; +
+      &quot;&lt;div style=&#39;width: 700px;&#39;&gt;&quot;+
+      &quot;&lt;div style=&#39;float: left;&#39;&gt;&lt;img src=&#39;img/blue.png&#39;&gt;&lt;/img&gt;&quot; +
+      &quot;&lt;p class=&#39;small&#39;&gt;&lt;strong&gt;Fキーを押してください&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;&quot; +
+      &quot;&lt;div class=&#39;float: right;&#39;&gt;&lt;img src=&#39;img/orange.png&#39;&gt;&lt;/img&gt;&quot; +
+      &quot;&lt;p class=&#39;small&#39;&gt;&lt;strong&gt;Jキーを押してください&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;&quot; +
+      &quot;&lt;/div&gt;&quot;+
+      &quot;&lt;p&gt;スペースキーを押すと実験を開始できます。&lt;/p&gt;&quot;,
+  post_trial_gap: 2000
+};
+timeline.push(instructions);
+
+/* test trials */
+var test_stimuli = [
+  { stimulus: &quot;img/blue.png&quot;, data: {test_part: &#39;test&#39;, correct_response: &#39;f&#39;}},
+  { stimulus: &quot;img/orange.png&quot;, data: {test_part: &#39;test&#39;, correct_response: &#39;j&#39;}}
+];
+
+var fixation = {
+  type: &#39;html-keyboard-response&#39;,
+  stimulus: &#39;&lt;div style=&quot;font-size:60px;&quot;&gt;+&lt;/div&gt;&#39;,
+  choices: jsPsych.NO_KEYS,
+  trial_duration: function(){
+    return jsPsych.randomization.sampleWithoutReplacement([250, 500, 750, 1000, 1250, 1500, 1750, 2000], 1)[0];
+    },
+  data: {test_part: &#39;fixation&#39;}
+}
+
+var test = {
+  type: &quot;image-keyboard-response&quot;,
+  stimulus: jsPsych.timelineVariable(&#39;stimulus&#39;),
+  choices: [&#39;f&#39;, &#39;j&#39;],
+  data: jsPsych.timelineVariable(&#39;data&#39;),
+  on_finish: function(data){
+    data.correct = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode(data.correct_response);
+    }
+}
+
+var test_procedure = {
+  timeline: [fixation, test],
+  timeline_variables: test_stimuli,
+  randomize_order: true,
+  repetitions: 5
+}
+
+timeline.push(test_procedure);</code></pre>
+<script type="text/javascript">
+/* create timeline */
+var timeline = [];
+
+/* define welcome message trial */
+var welcome = {
+  type: "html-keyboard-response",
+  stimulus: "スペースキーを押すと実験を開始できます。"
+};
+timeline.push(welcome);
+
+/* define instructions trial */
+var instructions = {
+  type: "html-keyboard-response",
+  stimulus: "<p>この実験では画面の中央に円が表示されます。 </p>" +
+      "<p>もし円が <strong>青なら</strong>、Fキーを押してください。</p>" +
+      "<p>もし円が <strong>オレンジなら</strong>、Jキーを押してください。</p>" +
+      "<div style='width: 700px;'>"+
+      "<div style='float: left;'><img src='img/blue.png'></img>" +
+      "<p class='small'><strong>Fキーを押してください</strong></p></div>" +
+      "<div class='float: right;'><img src='img/orange.png'></img>" +
+      "<p class='small'><strong>Jキーを押してください</strong></p></div>" +
+      "</div>"+
+      "<p>スペースキーを押すと実験を開始できます。</p>",
+  post_trial_gap: 2000
+};
+timeline.push(instructions);
+
+/* test trials */
+var test_stimuli = [
+  { stimulus: "img/blue.png", data: {test_part: 'test', correct_response: 'f'}},
+  { stimulus: "img/orange.png", data: {test_part: 'test', correct_response: 'j'}}
+];
+
+var fixation = {
+  type: 'html-keyboard-response',
+  stimulus: '<div style="font-size:60px;">+</div>',
+  choices: jsPsych.NO_KEYS,
+  trial_duration: function(){
+    return jsPsych.randomization.sampleWithoutReplacement([250, 500, 750, 1000, 1250, 1500, 1750, 2000], 1)[0];
+    },
+  data: {test_part: 'fixation'}
+}
+
+var test = {
+  type: "image-keyboard-response",
+  stimulus: jsPsych.timelineVariable('stimulus'),
+  choices: ['f', 'j'],
+  data: jsPsych.timelineVariable('data'),
+  on_finish: function(data){
+    data.correct = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode(data.correct_response);
+    }
+}
+
+var test_procedure = {
+  timeline: [fixation, test],
+  timeline_variables: test_stimuli,
+  randomize_order: true,
+  repetitions: 5
+}
+
+timeline.push(test_procedure);
+</script>
+<div id="画像のパスを変更" class="section level2">
+<h2>画像のパスを変更</h2>
+<p>実験で使う画像はレポジトリの<code>img</code>フォルダに置いてあるので、そこにアクセスするためのパスを追加します。<code>main.js</code>の中に、次のような変数を宣言します。</p>
+<pre class="js"><code>var repo_site = &quot;https://&lt;GitHubのユーザー名&gt;.github.io/&lt;レポジトリ名&gt;/&quot;;</code></pre>
+<script type="text/javascript">
+var repo_site = "https://<GitHubのユーザー名>.github.io/<レポジトリ名>/";
+</script>
+<p>そして画像を使っている個所のコードを変更します。</p>
+<pre class="js"><code>var instructions = {
+  type: &quot;html-keyboard-response&quot;,
+  stimulus: &quot;&lt;p&gt;この実験では画面の中央に円が表示されます。 &lt;/p&gt;&quot; +
+      &quot;&lt;p&gt;もし円が &lt;strong&gt;青なら&lt;/strong&gt;、Fキーを押してください。&lt;/p&gt;&quot; +
+      &quot;&lt;p&gt;もし円が &lt;strong&gt;オレンジなら&lt;/strong&gt;、Jキーを押してください。&lt;/p&gt;&quot; +
+      &quot;&lt;div style=&#39;width: 700px;&#39;&gt;&quot;+
+      &quot;&lt;div style=&#39;float: left;&#39;&gt;&lt;img src=&#39;&quot; + repo_site + &quot;img/blue.png&#39;&gt;&lt;/img&gt;&quot; +
+      &quot;&lt;p class=&#39;small&#39;&gt;&lt;strong&gt;Fキーを押してください&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;&quot; +
+      &quot;&lt;div class=&#39;float: right;&#39;&gt;&lt;img src=&#39;&quot; + repo_site + &quot;img/orange.png&#39;&gt;&lt;/img&gt;&quot; +
+      &quot;&lt;p class=&#39;small&#39;&gt;&lt;strong&gt;Jキーを押してください&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;&quot; +
+      &quot;&lt;/div&gt;&quot;+
+      &quot;&lt;p&gt;スペースキーを押すと実験を開始できます。&lt;/p&gt;&quot;,
+  post_trial_gap: 2000
+};</code></pre>
+<script type="text/javascript">
+var instructions = {
+  type: "html-keyboard-response",
+  stimulus: "<p>この実験では画面の中央に円が表示されます。 </p>" +
+      "<p>もし円が <strong>青なら</strong>、Fキーを押してください。</p>" +
+      "<p>もし円が <strong>オレンジなら</strong>、Jキーを押してください。</p>" +
+      "<div style='width: 700px;'>"+
+      "<div style='float: left;'><img src='" + repo_site + "img/blue.png'></img>" +
+      "<p class='small'><strong>Fキーを押してください</strong></p></div>" +
+      "<div class='float: right;'><img src='" + repo_site + "img/orange.png'></img>" +
+      "<p class='small'><strong>Jキーを押してください</strong></p></div>" +
+      "</div>"+
+      "<p>スペースキーを押すと実験を開始できます。</p>",
+  post_trial_gap: 2000
+};
+</script>
+<pre class="js"><code>var test_stimuli = [
+  { stimulus: repo_site + &quot;img/blue.png&quot;, 
+    data: {
+      test_part: &#39;test&#39;, 
+      correct_response: &#39;f&#39;}},
+  { stimulus: repo_site + &quot;img/orange.png&quot;, 
+    data: {
+      test_part: &#39;test&#39;, 
+      correct_response: &#39;j&#39;}}
+];</code></pre>
+<script type="text/javascript">
+var test_stimuli = [
+  { stimulus: repo_site + "img/blue.png", 
+    data: {
+      test_part: 'test', 
+      correct_response: 'f'}},
+  { stimulus: repo_site + "img/orange.png", 
+    data: {
+      test_part: 'test', 
+      correct_response: 'j'}}
+];
+</script>
+<p>そして<code>experiment_updated.html</code>の<code>&lt;head&gt;&lt;/head&gt;</code>内 (jsPsychなどを読み込んでいるところ) に以下のようなコードを追加し、<code>rt-main.js</code>を読み込みます。</p>
+<pre class="js"><code>&lt;script src=&quot;rt-main.js&quot;&gt;&lt;/script&gt;</code></pre>
+<script type="text/javascript">
+<script src="rt-main.js"></script>
+</script>
+<p>これで保存し、<code>experiment_updated.html</code>をブラウザで開いてください。うまく実験が表示されれば成功です。</p>
+<p>うまくいっていたら、<code>experiment_updated.html</code>と<code>rt_main.js</code>をGitHubのレポジトリにアップロードしてください。<code>https://&lt;GitHubのユーザー名&gt;.github.io/&lt;レポジトリ名&gt;/experiment_transformed.html</code> にアクセスして、実験が表示されるかを確認してください。アップロードしてすぐは表示されないことがあるので、数分待ってからがいいでしょう。<a href="https://honamik-s.github.io/demo/experiment_updated.html">こちら</a>から私の作ったものが見られるので参考にしてください。</p>
+</div>
+</div>
+<div id="qualtricsで表示するための準備" class="section level1">
+<h1>Qualtricsで表示するための準備</h1>
+<p><code>experiment_updated.html</code>をコピーして、<code>experiment_updated2.html</code>というファイルを作ります。その中の<code>jsPsych.init()</code>の中身を、このように変更してください。<code>display_element</code>というのを追加しています。</p>
+<pre class="js"><code>/* start the experiment */
+jsPsych.init({
+  timeline: timeline,
+  display_element: &#39;display_stage&#39;,
+  on_finish: function () {
+      jsPsych.data.displayData();
+  }
+});</code></pre>
+<script type="text/javascript">
+/* start the experiment */
+jsPsych.init({
+  timeline: timeline,
+  display_element: 'display_stage',
+  on_finish: function () {
+      jsPsych.data.displayData();
+  }
+});
+</script>
+<p>さらに、<code>&lt;head&gt;&lt;/head&gt;</code>のすぐ下に以下のようなコードを追加します。</p>
+<pre class="css"><code>&lt;body&gt;
+  &lt;style&gt;
+      #display_stage_background {
+          width: 100vw;
+          background-color: white;
+          z-index: -1;
+      }
+  
+      #display_stage {
+          position: fixed;
+          left: 1vw;
+          top: 1vh;
+          height: 98vh;
+          width: 98vw;
+          background-color: white;
+          box-shadow: 1px 1px 1px #999;
+          border-radius: 15px;
+          z-index: 0;
+          overflow-y: hidden;
+          overflow-x: hidden;
+      }
+  &lt;/style&gt;
+  
+  &lt;div id=&#39;display_stage_background&#39;&gt;&lt;/div&gt;
+  &lt;div id=&#39;display_stage&#39;&gt;&lt;/div&gt;
+&lt;/body&gt;</code></pre>
+</div>
+<div id="qualtricsに書き込むjavascriptコードの準備" class="section level1">
+<h1>Qualtricsに書き込むJavaScriptコードの準備</h1>
+<p>新たに<code>qualtrics.js</code>というファイルを作り、以下のようなコードを追加します。</p>
+<pre class="js"><code>Qualtrics.SurveyEngine.addOnload(function()
+{
+    /*Place your JavaScript here to run when the page loads*/
+
+});
+
+Qualtrics.SurveyEngine.addOnReady(function()
+{
+    /*Place your JavaScript here to run when the page is fully displayed*/
+
+});
+
+Qualtrics.SurveyEngine.addOnUnload(function()
+{
+    /*Place your JavaScript here to run when the page is unloaded*/
+
+});</code></pre>
+<script type="text/javascript">
+Qualtrics.SurveyEngine.addOnload(function()
+{
+    /*Place your JavaScript here to run when the page loads*/
+
+});
+
+Qualtrics.SurveyEngine.addOnReady(function()
+{
+    /*Place your JavaScript here to run when the page is fully displayed*/
+
+});
+
+Qualtrics.SurveyEngine.addOnUnload(function()
+{
+    /*Place your JavaScript here to run when the page is unloaded*/
+
+});
+</script>
+<p>1つ目の関数の中身をこのように変更します。なお、<code>task_github</code>という変数には自分のレポジトリを格納してください。<code>requiredResources</code>には、実験ファイルで読み込んでいる必要なプラグインをすべて入れてください。<code>rt-main.js</code>も忘れずに。</p>
+<pre class="js"><code>Qualtrics.SurveyEngine.addOnload(function()
+{
+    /*Place your JavaScript here to run when the page is fully displayed*/
+    var qthis = this;
+    qthis.hideNextButton();
+
+    var task_github = &quot;https://honamik-s.github.io/demo/&quot;; 
+    // https://&lt;GitHubのユーザー名&gt;.github.io/&lt;レポジトリ名&gt;/
+
+    var requiredResources = [
+        task_github + &quot;jspsych-6.1.0/jspsych.js&quot;,
+        task_github + &quot;jspsych-6.1.0/plugins/jspsych-html-keyboard-response.js&quot;,
+        task_github + &quot;jspsych-6.1.0/plugins/jspsych-image-keyboard-response.js&quot;,
+        task_github + &quot;rt-main.js&quot;
+    ];
+
+    function loadScript(idx) {
+        console.log(&quot;Loading &quot;, requiredResources[idx]);
+        jQuery.getScript(requiredResources[idx], function () {
+            if ((idx + 1) &lt; requiredResources.length) {
+                loadScript(idx + 1);
+            } else {
+                initExp();
+            }
+        });
+    }
+
+    if (window.Qualtrics &amp;&amp; (!window.frameElement || window.frameElement.id !== &quot;mobile-preview-view&quot;)) {
+        loadScript(0);
+    }
+
+    jQuery(&quot;&lt;div id = &#39;display_stage_background&#39;&gt;&lt;/div&gt;&quot;).appendTo(&#39;body&#39;);
+    jQuery(&quot;&lt;div id = &#39;display_stage&#39;&gt;&lt;/div&gt;&quot;).appendTo(&#39;body&#39;);
+});
+</code></pre>
+<script type="text/javascript">
+Qualtrics.SurveyEngine.addOnload(function()
+{
+    /*Place your JavaScript here to run when the page is fully displayed*/
+    var qthis = this;
+    qthis.hideNextButton();
+
+    var task_github = "https://honamik-s.github.io/demo/"; 
+    // https://<GitHubのユーザー名>.github.io/<レポジトリ名>/
+
+    var requiredResources = [
+        task_github + "jspsych-6.1.0/jspsych.js",
+        task_github + "jspsych-6.1.0/plugins/jspsych-html-keyboard-response.js",
+        task_github + "jspsych-6.1.0/plugins/jspsych-image-keyboard-response.js",
+        task_github + "rt-main.js"
+    ];
+
+    function loadScript(idx) {
+        console.log("Loading ", requiredResources[idx]);
+        jQuery.getScript(requiredResources[idx], function () {
+            if ((idx + 1) < requiredResources.length) {
+                loadScript(idx + 1);
+            } else {
+                initExp();
+            }
+        });
+    }
+
+    if (window.Qualtrics && (!window.frameElement || window.frameElement.id !== "mobile-preview-view")) {
+        loadScript(0);
+    }
+
+    jQuery("<div id = 'display_stage_background'></div>").appendTo('body');
+    jQuery("<div id = 'display_stage'></div>").appendTo('body');
+});
+
+</script>
+<p>コードでやっているのは「次へ進むボタンを隠す」のと「必要な諸々の読み込み」です。例えば、</p>
+<pre class="js"><code>var qthis = this;
+qthis.hideNextButton();</code></pre>
+<script type="text/javascript">
+var qthis = this;
+qthis.hideNextButton();
+</script>
+<p>この部分では、Qualtricsで調査をするときに表示される「次へ進むボタン」を隠しています。</p>
+</div>
+<div id="jspsychのデータをqualtricsで記録する" class="section level1">
+<h1>jsPsychのデータをQualtricsで記録する</h1>
+<p>jsPsychでとったデータをQualtricsで記録できたら便利ですよね。Qualtricsからデータのエクスポートをすると、そのエクスポートされたファイルにjsPsychのデータも含まれているということです。</p>
+<p><a href="https://kywch.github.io/jsPsych-in-Qualtrics/rt-task/#change-5-summarize-and-save-the-results-to-qualtrics">こちらのページ</a>では以下のようなコードが紹介されているのですが、これでは平均反応時間と正答率のみが記録されていて、各試行の反応時間や正誤は記録されていません。</p>
+<pre class="js"><code>jsPsych.init({
+    timeline: timeline,
+    display_element: &#39;display_stage&#39;,
+    on_finish: function (data) {
+        /* Change 5: Summarize and save the results to Qualtrics */
+        // summarize the results
+        var trials = jsPsych.data.get().filter({
+            test_part: &#39;test&#39;
+        });
+        var correct_trials = trials.filter({
+            correct: true
+        });
+        var accuracy = Math.round(correct_trials.count() / trials.count() * 100);
+        var rt = Math.round(correct_trials.select(&#39;rt&#39;).mean());
+
+        // save to qualtrics embedded data
+        Qualtrics.SurveyEngine.setEmbeddedData(&quot;accuracy&quot;, accuracy);
+        Qualtrics.SurveyEngine.setEmbeddedData(&quot;rt&quot;, rt);
+
+        /* Change 6: Add the clean up and continue functions.*/
+        // clear the stage
+        jQuery(&#39;display_stage&#39;).remove();
+        jQuery(&#39;display_stage_background&#39;).remove();
+
+        // simulate click on Qualtrics &quot;next&quot; button, making use of the Qualtrics JS API
+        qthis.clickNextButton();
+    }
+});</code></pre>
+<script type="text/javascript">
+jsPsych.init({
+    timeline: timeline,
+    display_element: 'display_stage',
+    on_finish: function (data) {
+        /* Change 5: Summarize and save the results to Qualtrics */
+        // summarize the results
+        var trials = jsPsych.data.get().filter({
+            test_part: 'test'
+        });
+        var correct_trials = trials.filter({
+            correct: true
+        });
+        var accuracy = Math.round(correct_trials.count() / trials.count() * 100);
+        var rt = Math.round(correct_trials.select('rt').mean());
+
+        // save to qualtrics embedded data
+        Qualtrics.SurveyEngine.setEmbeddedData("accuracy", accuracy);
+        Qualtrics.SurveyEngine.setEmbeddedData("rt", rt);
+
+        /* Change 6: Add the clean up and continue functions.*/
+        // clear the stage
+        jQuery('display_stage').remove();
+        jQuery('display_stage_background').remove();
+
+        // simulate click on Qualtrics "next" button, making use of the Qualtrics JS API
+        qthis.clickNextButton();
+    }
+});
+</script>
+<p>そこで、私が<del>必死に</del>各試行の反応時間などを記録できるようにコードを改変したので、それをご紹介します。</p>
+<p><code>qualtrics.js</code>の、さっきのセクションで書いていたコードの続き (<code>Qualtrics.SurveyEngine.addOnReady(function(){})</code>の末尾) に、以下のようなコードを追加します。</p>
+<pre class="js"><code>function initExp() {
+  jsPsych.init({
+      timeline: timeline,
+      display_element: &#39;display_stage&#39;,
+      on_finish: function (data) {
+
+            var datajs = jsPsych.data.get().json();
+          
+          Qualtrics.SurveyEngine.setEmbeddedData(&quot;datajs&quot;, datajs);
+  
+          jQuery(&#39;display_stage&#39;).remove();
+          jQuery(&#39;display_stage_background&#39;).remove();
+  
+          qthis.clickNextButton();
+      };
+  });
+};</code></pre>
+<script type="text/javascript">
+function initExp() {
+  jsPsych.init({
+      timeline: timeline,
+      display_element: 'display_stage',
+      on_finish: function (data) {
+
+            var datajs = jsPsych.data.get().json();
+          
+          Qualtrics.SurveyEngine.setEmbeddedData("datajs", datajs);
+  
+          jQuery('display_stage').remove();
+          jQuery('display_stage_background').remove();
+  
+          qthis.clickNextButton();
+      };
+  });
+};
+</script>
+<p>まず<code>datajs</code>に、試行のデータを格納します。このとき<code>.json()</code>とすることで、データがJSON形式で保存されます。</p>
+<p><code>Qualtrics.SurveyEngine.setEmbeddedData("datajs", datajs)</code>の部分で、Qualtricsの埋め込みデータとしてさっき作った<code>datajs</code>を使いますよ、と指定します。このダブルクォーテーションつきの<code>"datajs"</code>はこのあとのセクションで使うので、覚えておいてください。</p>
+</div>
+<div id="qualtricsに実験を埋め込む" class="section level1">
+<h1>Qualtricsに実験を埋め込む</h1>
+<p>いよいよQualtricsに実験を埋め込みます。まずQualtricsで新しいアンケートを作成してください。質問を1つ作り（もし新しいアンケートを作成して、デフォルトで質問が表示されている場合はその質問をそのまま使ってかまいません）、「質問タイプを変更」→「テキスト/グラフィック」にします。</p>
+<p><img src="res/200513_qualt1.png" width="500" /></p>
+<p>上の画像のように「JavaScriptを追加」をクリックして、出てきた画面に<code>qualtrics.js</code>の中身を貼ります。</p>
+<p><img src="res/200513_qualt2.png" width="250" /></p>
+<p>そして質問文をHTML表示にして、この部分に以下のようなコードを追加します。</p>
+<pre class="css"><code>&lt;link href=&quot;https://&lt;GitHubのユーザー名&gt;.github.io/&lt;レポジトリ名&gt;/jspsych-6.1.0/css/jspsych.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;&lt;/link&gt;
+
+&lt;div&gt;
+    &lt;span style=&quot;font-size: 24px;&quot;&gt;
+    &lt;br&gt;&lt;br&gt;
+    もしこのメッセージが &lt;span style=&quot;color: rgb(255, 0, 0);&quot;&gt;&lt;b&gt;5分以上表示されていたら、&lt;/b&gt;&lt;/span&gt;,&lt;br&gt;
+    お手数ですが管理者までご連絡ください。
+    &lt;br&gt;&lt;br&gt;
+    &lt;/span&gt;
+&lt;/div&gt;
+  
+&lt;style&gt;
+  #display_stage_background {
+      width: 100vw;
+      background-color: white;
+      z-index: -1;
+  }
+
+  #display_stage {
+      position: fixed;
+      left: 1vw;
+      top: 1vh;
+      height: 98vh;
+      width: 98vw;
+      background-color: white;
+      box-shadow: 1px 1px 1px #999;
+      border-radius: 15px;
+      z-index: 0;
+      overflow-y: hidden;
+      overflow-x: hidden;
+  }
+&lt;/style&gt;</code></pre>
+<p>次にQualtricsの画面にある「アンケートフロー」をクリックして、次の手順にしたがって埋め込みデータを作成してください。</p>
+<ol style="list-style-type: decimal">
+<li>「こちらに新しい要素を追加」をクリック</li>
+<li>「埋め込みデータ」を選ぶ</li>
+<li>「新しいフィールド名を定義するか、ドロップダウンから選択」をクリックし、<code>datajs</code>と入力</li>
+<li>「フローを保存」をクリック</li>
+</ol>
+<p>ここまで進んだら、Qualtricsの「プレビュー」を押して実験を実行できます。「データと分析」→「エクスポートとインポート」→「データをエクスポート」でcsvファイルやtsvファイルをダウンロードすると、データがPCに保存できます。</p>
+<p>出てくるデータに癖がありますが、Rの<code>jsonlite</code>パッケージと<code>tidyr</code>パッケージでなんとかなります。</p>
+</div>
+</div>
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">© All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

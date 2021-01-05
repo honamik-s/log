@@ -1,0 +1,102 @@
+---
+title: "オンライン実験をがんばった話"
+author: "Honami K"
+date: 2020-12-15
+categories: ["Experiment"]
+tags: ["R", "labjs", "jsPsych"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      eval = FALSE)
+library(tidyverse)
+```
+
+[オンライン実験・調査に関するアドベントカレンダー](https://adventar.org/calendars/6005)15日目の記事です。
+
+今年はいろいろありましたね。
+
+私の所属する研究室は、実験心理学の研究室です。「我々は実験がアイデンティティ」というのがいつもボスとしゃべっていることで、今年は実験ができず、自分のアイデンティティが揺らぐ一年でした。
+
+実験をしないと研究が進まないので、何かしらやろうと思って、今年の春はずっとオンライン実験の作り方を勉強していました。lab.jsやjsPsychというものがあるのを知って、小林先生の[このチュートリアル](https://labjs.yucis.net/8496c3c67b384168b9e69f165ee06e16)や[lab.js公式ドキュメント](https://labjs.readthedocs.io/en/latest/)、[jsPsychの公式チュートリアル](https://www.jspsych.org/tutorials/hello-world/)を見ていました。両方とも結構使いやすいツールなので（違いについては[この記事](https://mklab.info/2020/12/11/jspsych-vs-lab-js/)を参照）結構すぐに実験が作れるようになりました。
+
+結構lab.jsについては詳しくなった自信があります。JavaScriptも結構できるようになりました。[^1]
+
+[^1]: 私はPythonとRの人なので、JavaScript書かなきゃいけないのか…と結構渋りました。が、やっておいてよかったとは思います。
+
+でも結局のところ、私自身はこれまで一度もオンライン実験をしていないんですよね。自分がやりたい実験をオンラインでやるのは難しかったからです。
+
+ただ勉強したことが何の役にも立たなかったわけではありません。オンライン実験をすることになった卒論生が多かったからです。私が所属する学科では学部3年のときにPsychoPy Builderの使い方を勉強するので、卒論生ならPsychoPyは一通り使えるのですが、lab.jsを使うことは想定していなかったはずで、とても大変だったと思います。lab.jsやjsPsychを使える人が研究室には私以外にいなかったので、オンライン実験を使った卒論については私がほぼすべての面倒を見ました。卒論生のがんばりには本当に頭が下がる思いです。
+
+特に多かった質問2つと、それについての対処法をご紹介しようと思います。
+
+
+# Q1. オンライン実験はどうやって公開したらいいですか？
+
+オンライン実験の作成じたいはlab.js, jsPsychなどでいいのですが、作ったものをどこで公開するのか？は結構難しい問題です。当初はQualtricsにlab.jsやjsPsychで作った実験を貼り込む方法 (jsPsychの実験を貼る方法については[こちら](https://honamik-s.github.io/log/post/200512_jspsych-on-qualt/); 柏原くんの[記事](https://kscscr.com/archives/jspsych-qualtrics-r.html)も参照してください。こっちのほうが自分のより分かりやすい気が…) を推奨していたのですが、途中から推奨しなくなりました。なぜなら、Qualtricsから出てくるデータがめちゃめちゃuntidyだからです。Rに強い人なら気にならないかもしれませんが、そうでない人・Excelでなんとかしたい人にはつらいです。
+
+そこで、[Open Lab](https://open-lab.online/)を使い始めました。Open Labのいいところは、lab.jsとの連携が簡単なところです。こちらの[公式ドキュメントページ](https://labjs.readthedocs.io/en/latest/learn/deploy/3d-openlab.html)にも、連携の方法が載っています。細かいやり方はいつか時間のある時にまとめますが、基本的にはlab.jsのビルダーで保存ボタンの隣の矢印 (赤丸で示す) をクリックして、「Upload to Open Lab」を選ぶだけです。
+
+<center>
+
+![](openlab_labjs.png){width=500px}
+
+</center>
+
+300人までなら無料で実験できるので、卒論の実験には十分でしょう。ただ無料版だと2つ以上の実験を同時に実施することができないので、実験群を3つ設けて同じ数だけ参加者を取る、みたいなのは少し難しかったです。
+
+
+# Q2. Qualtricsにlab.jsの実験を貼り込んで実施したところ、lab.jsからのデータがJSON形式で出力されて、Excelでは内容がよくわかりません。
+
+上で書いた「Qualtricsから出てくるデータがめちゃめちゃuntidy」ってやつですね。lab.jsの公式ドキュメントで[Qualtricsのデータ整理方法](https://labjs.readthedocs.io/en/latest/learn/deploy/3-third-party.html#tutorial-deploy-third-party-postprocessing)が紹介されていて、基本的にはこのRコードで解読できます。ただ、このRコードが結構難解なんですよね。一応簡単に解説します。
+
+まず必要パッケージ (`tidyverse`, `readr`) を読み込みます。
+
+Qualtricsからはcsv, tsv, xlsxなど様々な形式でデータを書き出すことが可能ですが、できればcsv形式で出力してください。tsvやxlsxだとRで扱うときにエラーを吐くことがあります。
+
+```{r eval=FALSE}
+library(tidyverse)
+library(readr)
+
+data_raw <- read_csv('data.csv')
+```
+
+次に、lab.jsのデータが入っている列の名前を`labjs_column`というオブジェクトに入れます。
+
+```{r}
+labjs_column <- 'labjs-data'
+```
+
+次が、その列に入っているJSON形式のデータを、RやExcelで扱いやすい形のデータに変形させるためのコードです。難解ですが…。
+
+```{r}
+data_raw %>%
+  mutate(
+    !!labjs_column := recode(.[[labjs_column]], .missing='[{}]')
+  ) %>%
+  group_by_all() %>%
+  do(
+    fromJSON(.[[labjs_column]], flatten=T)
+  ) %>%
+  ungroup() %>%
+  select(-matches(labjs_column)) -> data
+```
+
+
+`tidyverse`を使っている人だったら`mutate()`などは見覚えがあると思いますが、`recode()`とか、あまり使わないですよね。`switch()`のベクトル版で、データを置き換えることができます。
+
+```{r eval=TRUE}
+vector <- c("a", "b", "c")
+dplyr::recode(vector, a = "Apple")
+```
+
+`group_by_all()`は`group_by()`の兄弟みたいな関数です。
+
+```{r eval=TRUE}
+dplyr::group_by_all(mtcars) %>%
+  head(10)
+```
+
+
+一応これでいけると思いますが、もし何かトラブったら教えてください。研究室内でもしょっちゅうトラブったのですが、トラブルシューティングも行き当たりばったりでやっていたので、あまりきちんと記録していなかったのです。
+
