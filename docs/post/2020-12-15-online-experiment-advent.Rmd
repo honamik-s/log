@@ -39,7 +39,7 @@ library(tidyverse)
 
 <center>
 
-![](openlab_labjs.png){width=500px}
+![](static/images/openlab_labjs.png){width=500px}
 
 </center>
 
