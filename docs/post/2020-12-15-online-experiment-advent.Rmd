@@ -39,7 +39,7 @@ library(tidyverse)
 
 <center>
 
-![](static/images/openlab_labjs.png){width=500px}
+![](https://raw.githubusercontent.com/honamik-s/log/master/docs/openlab_labjs.png){width=500px}
 
 </center>
 

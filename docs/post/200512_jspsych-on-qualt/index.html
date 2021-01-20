@@ -156,13 +156,13 @@
 <p>今回はGitHubのレポジトリに実験ファイルを置いて利用するので、GitHubにレポジトリを作る必要があります。<a href="https://help.github.com/ja/github/getting-started-with-github/create-a-repo">こちら</a>を見ると、作り方がわかると思います。</p>
 <p>GitHubを使わない方法もあるはずですが、私が把握していないので今回は扱いません。</p>
 <div class="figure">
-<img src="200512_github.png" alt="GitHubのレポジトリ作成" width="500" />
+<img src="https://raw.githubusercontent.com/honamik-s/log/master/docs/openlab_labjs.png200512_github.png" alt="GitHubのレポジトリ作成" width="500" />
 <p class="caption">GitHubのレポジトリ作成</p>
 </div>
 </div>
 <div id="jspsychの実験をgithubに置く" class="section level1">
 <h1>jsPsychの実験をGitHubに置く</h1>
-<p><img src="200512_folder.png" /></p>
+<p><img src="https://raw.githubusercontent.com/honamik-s/log/master/docs/200512_folder.png" /></p>
 <p>jsPsychフォルダ、実験で使う画像のフォルダ、実験ファイル (html) を準備します。今回使っている実験は、jsPsychの公式サイトで公開されている反応時間課題チュートリアルのものです。<code>experiment.html</code>の中身はこんな感じ。</p>
 <details>
 <summary>サンプルコード</summary>
@@ -260,7 +260,7 @@
 <p><br><br></p>
 <p>これらを作成したGitHubレポジトリにアップロードします。「Commit change」を押し忘れないようにしてください。</p>
 <p>アップロードが終わったら、レポジトリの設定画面に移動します。「GitHub Pages」というセクションを探し、「Source」をMaster branchとします。</p>
-<p><img src="200512_github_pages.png" width="500" /></p>
+<p><img src="https://raw.githubusercontent.com/honamik-s/log/master/docs/200512_github_pages.png" width="500" /></p>
 <p><code>https://&lt;GitHubのユーザー名&gt;.github.io/&lt;レポジトリ名&gt;/</code>に、webページが公開されるので、確認してください。</p>
 </div>
 <div id="実験ファイルを編集" class="section level1">
@@ -736,9 +736,9 @@ function initExp() {
 <div id="qualtricsに実験を埋め込む" class="section level1">
 <h1>Qualtricsに実験を埋め込む</h1>
 <p>いよいよQualtricsに実験を埋め込みます。まずQualtricsで新しいアンケートを作成してください。質問を1つ作り（もし新しいアンケートを作成して、デフォルトで質問が表示されている場合はその質問をそのまま使ってかまいません）、「質問タイプを変更」→「テキスト/グラフィック」にします。</p>
-<p><img src="200513_qualt1.png" width="500" /></p>
+<p><img src="https://raw.githubusercontent.com/honamik-s/log/master/docs/200513_qualt1.png" width="500" /></p>
 <p>上の画像のように「JavaScriptを追加」をクリックして、出てきた画面に<code>qualtrics.js</code>の中身を貼ります。</p>
-<p><img src="200513_qualt2.png" width="250" /></p>
+<p><img src="https://raw.githubusercontent.com/honamik-s/log/master/docs/200513_qualt2.png" width="250" /></p>
 <p>そして質問文をHTML表示にして、この部分に以下のようなコードを追加します。</p>
 <pre class="css"><code>&lt;link href=&quot;https://&lt;GitHubのユーザー名&gt;.github.io/&lt;レポジトリ名&gt;/jspsych-6.1.0/css/jspsych.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;&lt;/link&gt;
 

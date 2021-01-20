@@ -33,13 +33,13 @@ QualtricsでjsPsychの実験を埋め込んで実行するためのコードな�
 
 GitHubを使わない方法もあるはずですが、私が把握していないので今回は扱いません。
 
-![GitHubのレポジトリ作成](200512_github.png){width=500px}
+![GitHubのレポジトリ作成](https://raw.githubusercontent.com/honamik-s/log/master/docs/openlab_labjs.png200512_github.png){width=500px}
 
 
 
 # jsPsychの実験をGitHubに置く
 
-![](200512_folder.png)
+![](https://raw.githubusercontent.com/honamik-s/log/master/docs/200512_folder.png)
 
 jsPsychフォルダ、実験で使う画像のフォルダ、実験ファイル (html) を準備します。今回使っている実験は、jsPsychの公式サイトで公開されている反応時間課題チュートリアルのものです。``experiment.html``の中身はこんな感じ。
 
@@ -143,7 +143,7 @@ jsPsychフォルダ、実験で使う画像のフォルダ、実験ファイル 
 
 アップロードが終わったら、レポジトリの設定画面に移動します。「GitHub Pages」というセクションを探し、「Source」をMaster branchとします。
 
-![](200512_github_pages.png){width=500px}
+![](https://raw.githubusercontent.com/honamik-s/log/master/docs/200512_github_pages.png){width=500px}
 
 
 ``https://<GitHubのユーザー名>.github.io/<レポジトリ名>/``に、webページが公開されるので、確認してください。
@@ -492,11 +492,11 @@ function initExp() {
 
 いよいよQualtricsに実験を埋め込みます。まずQualtricsで新しいアンケートを作成してください。質問を1つ作り（もし新しいアンケートを作成して、デフォルトで質問が表示されている場合はその質問をそのまま使ってかまいません）、「質問タイプを変更」→「テキスト/グラフィック」にします。
 
-![](200513_qualt1.png){width=500px}
+![](https://raw.githubusercontent.com/honamik-s/log/master/docs/200513_qualt1.png){width=500px}
 
 上の画像のように「JavaScriptを追加」をクリックして、出てきた画面に``qualtrics.js``の中身を貼ります。
 
-![](200513_qualt2.png){width=250px}
+![](https://raw.githubusercontent.com/honamik-s/log/master/docs/200513_qualt2.png){width=250px}
 
 
 そして質問文をHTML表示にして、この部分に以下のようなコードを追加します。

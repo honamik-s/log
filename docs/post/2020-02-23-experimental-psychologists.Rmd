@@ -62,7 +62,7 @@ opts_knit$set(width=75)
 
 なかでも視覚探索課題は、視覚情報の選択システムである視覚的注意 (visual attention) の働きを調べるために広く用いられる課題です。
 
-![図1. T (標的) を探し、左向きか右向きかを答えてください](visualsearch.png){width=250px}
+![図1. T (標的) を探し、左向きか右向きかを答えてください](https://raw.githubusercontent.com/honamik-s/log/master/docs/visualsearch.png){width=250px}
 
 上に、典型的な視覚探索課題の試行画面を示しました。参加者の課題は標的刺激 (ここではT) を妨害刺激 (ここではL) の中から探すことです。
 

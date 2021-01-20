@@ -205,7 +205,7 @@
 <h2>データを読み込む</h2>
 <p>ここで実際のデータを使って分析をしてみましょう。今回は空間手がかり課題 (ポズナー課題) のデータを使ってみます。空間手がかり課題をPsychoPyのbuilderで作るチュートリアルを私のボスが書いているので、<a href="http://ogwlab.org/?page_id=815">こちら</a>もご参照ください。わかりやすくておすすめです。</p>
 <p>今回使った課題はこんな流れです。</p>
-<p><img src="posner.png" /></p>
+<p><img src="https://raw.githubusercontent.com/honamik-s/log/master/docs/posner.png" /></p>
 <p>参加者の課題は、左右の箱のどちらかに呈示される文字 (標的) がEかFかを、キー押しで判断することです。標的呈示前に、「手がかり」として左右どちらかの箱の枠が短い時間だけ太く表示されます。手がかり位置と標的位置が同じ試行を「有効手がかり条件」、異なる試行を「無効手がかり条件」と呼びます。</p>
 <p>手がかりと同じ場所に標的が出てくると、手がかりによって注意がその場所に向いている状態なので、すばやく反応できます。一方で手がかりと反対側に標的が出てきたときには、手がかり位置にいったん注意が向いたあとで標的位置まで移動しなければいけないので、少し時間がかかります。この「注意が向いている状態」と「向いていない状態」との差を比較することで、目に見えない“注意”の働きを取り出しています (少なくとも、そのように考えて実験をします)。</p>
 <pre class="r"><code>some_data &lt;- read.table(file = &quot;exp.txt&quot;, header = T)
@@ -326,7 +326,7 @@ model {
 ##   ..$ C          : num 2
 ##  $ genInitList:function ()  
 ##   ..- attr(*, &quot;srcref&quot;)= &#39;srcref&#39; int [1:8] 105 18 113 3 18 3 105 113
-##   .. ..- attr(*, &quot;srcfile&quot;)=Classes &#39;srcfilecopy&#39;, &#39;srcfile&#39; &lt;environment: 0x000000001c3907f0&gt;</code></pre>
+##   .. ..- attr(*, &quot;srcfile&quot;)=Classes &#39;srcfilecopy&#39;, &#39;srcfile&#39; &lt;environment: 0x000000001c39f900&gt;</code></pre>
 <p>こういう形に整形できたら、データの準備は完了です。</p>
 </div>
 <div id="mcmc" class="section level2">
